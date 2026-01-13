@@ -1,0 +1,20 @@
+.fact-box {
+  background-color: rgba(138, 43, 226, 0.08); /* translucent prime-lite */
+  border-left: 4px solid var(--prime);
+  border-radius: 12px;
+  padding: 1.5em;
+  box-shadow: 0 6px 16px rgba(138, 43, 226, 0.1);
+}
+.fact-box h2 {
+  color: var(--prime);
+  margin-top: 0;
+}
+
+
+
+@media (--mob) {
+ .card {
+    padding:  0.25em;
+}
+
+}

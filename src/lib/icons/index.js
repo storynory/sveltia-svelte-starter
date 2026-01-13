@@ -1,0 +1,11 @@
+export { default as UserIcon } from './user.svelte';
+export { default as Menu } from './iconMenu.svelte';
+export { default as HomeIcon } from './home.svelte';
+export { default as ImageIcon } from './iconImage.svelte';
+export { default as SocketIcon } from './socket.svelte';
+export { default as PlusIcon } from './iconPlus.svelte';
+export { default as CatIcon } from './iconCategorySearch.svelte';
+export { default as TypeIcon } from './iconTypeog.svelte';
+export { default as CloseIcon } from './iconClose.svelte';
+export { default as IconFace } from './iconFace.svelte';
+export { default as IconLogin } from './iconLogin.svelte';

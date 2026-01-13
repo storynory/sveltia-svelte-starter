@@ -1,0 +1,152 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: storynory/starter
+
+media_folder: content/uploads
+public_folder: /uploads
+
+collections:
+  - name: posts
+    label: Posts
+    folder: content/posts
+    format: frontmatter
+    fields:
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: true
+
+      - label: Title
+        name: title
+        widget: string
+        required: true
+
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+
+      - label: Thumb
+        name: featuredImage
+        widget: image
+        required: false
+
+      - label: Tags
+        name: tags
+        widget: relation
+        collection: tags
+        value_field: slug
+        display_fields: [title]
+        search_fields: [title, description]
+        multiple: true
+        required: false
+
+  - name: tags
+    label: Tags
+    folder: content/tags
+    format: frontmatter
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        required: true
+
+      - label: Description
+        name: description
+        widget: markdown
+        required: false
+
+      - label: Thumb
+        name: categoryImage
+        widget: image
+        required: false
+
+  - name: people
+    label: People
+    folder: content/people
+    format: frontmatter
+    fields:
+      - label: Name
+        name: name
+        widget: string
+        required: true
+
+      - label: Slug
+        name: slug
+        widget: string
+        required: false
+
+      - label: Bio
+        name: bio
+        widget: markdown
+        required: false
+
+      - label: Photo
+        name: photo
+        widget: image
+        required: false
+
+  - name: podcasts
+    label: Podcasts
+    folder: content/podcasts
+    format: frontmatter
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        required: true
+
+      - label: Date
+        name: date
+        widget: datetime
+        required: false
+
+      - label: Description
+        name: description
+        widget: markdown
+        required: false
+
+      - label: Audio File
+        name: audio
+        widget: file
+        required: false
+
+      - label: Duration
+        name: duration
+        widget: string
+        required: false
+
+      - label: Length
+        name: length
+        widget: string
+        required: false
+
+  - name: settings
+    label: Settings
+    files:
+      - label: Site Settings
+        name: site
+        file: content/settings/site.md
+        format: frontmatter
+        fields:
+          - label: Site Title
+            name: siteTitle
+            widget: string
+            required: false
+
+          - label: Site Description
+            name: siteDescription
+            widget: text
+            required: false
+
+          - label: Default Share Image
+            name: defaultImage
+            widget: image
+            required: false
+
+          - label: Accent Colour
+            name: accentColour
+            widget: string
+            required: false

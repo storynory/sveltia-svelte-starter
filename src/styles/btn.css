@@ -1,0 +1,78 @@
+/* Buttons */
+
+.btn {
+	font-size: 1em; /*changes according to context */
+	border-radius: 8px;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	transition: background 0.3s;
+	background-color: #8a4fff;
+	color: white;
+	border: none;
+	display: inline-block;
+}
+
+.btn.--btn-small {
+	font-size: 0.8em;
+	padding: 0.5rem;
+}
+
+.-ghost {
+	background-color: transparent;
+	border: 1px solid gray;
+	color: #333;
+}
+
+.btn.-ghost:hover {
+	background-color: salmon;
+}
+
+a.btn:hover {
+	text-decoration: none;
+}
+
+.btn.full {
+	width: 100%;
+}
+
+.btn.--gray {
+	background-color: gray;
+}
+
+.btn.--gray:hover {
+	background-color: silver;
+}
+
+.btn:hover {
+	background-color: indigo;
+	border-color: #0056b3;
+	color: white;
+}
+
+button:disabled {
+	background-color: #ccc;
+	border-color: #ccc;
+	cursor: not-allowed;
+	color: #666;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.btn:hover {
+	text-decoration: none;
+}
+
+a.btn.bg-butter {
+	background-color: var(--butter);
+	color: #333;
+	text-decoration: none;
+	border: 3px solid transparent;
+}
+
+a.btn.bg-butter:hover {
+	background-color: var(--frog);
+	border: 3px solid white;
+}
+

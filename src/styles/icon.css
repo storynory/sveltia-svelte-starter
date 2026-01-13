@@ -1,0 +1,54 @@
+.icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+.animated,.oval-thought {
+    position: relative
+}
+
+.oval-thought {
+    font-size: .75em;
+    padding-right: 1em
+}
+
+.oval-thought:after,.oval-thought:before {
+    display: block;
+    content: "";
+    position: absolute;
+    background-color: #63dec5;
+    border-radius: 30px
+}
+
+.oval-thought:after,.oval-thought:before {
+    bottom: -15px;
+    left: 50px;
+    width: 30px;
+    height: 30px
+}
+
+.oval-thought:after {
+    bottom: -30px;
+    left: 30px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px
+}
+
+.round {
+    border-radius: 180px
+}
+
+.rounded {
+    border-radius: 4px
+}

@@ -1,0 +1,24 @@
+{
+	"srcDir": "./content/uploads",
+	"outDir": "./static/uploads",
+	"inputExts": [".jpg", ".jpeg", ".png", ".webp"],
+	"widths": [320, 640, 960],
+
+	"formats": {
+		"avif": { "enabled": false, "quality": 50 },
+		"webp": { "enabled": true, "quality": 80 }
+	},
+
+	"fallback": {
+		"enabled": true,
+		"format": "jpg",
+		"width": 640,
+		"quality": 82,
+		"mozjpeg": true
+	},
+
+	"cacheFile": ".image-cache.json",
+	"metaFile": "./src/lib/image-sizes.json",
+	"defaultSizes": "(min-width: 1200px) 25vw, (min-width: 768px) 33vw, 100vw"
+}
+

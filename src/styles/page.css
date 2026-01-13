@@ -1,0 +1,42 @@
+.page,
+main {
+	display: block;
+	margin: 0 auto;
+	overflow-x: clip; /* 'clip' is nicer than hidden; use hidden if older Safari */
+}
+
+/* Centred page container */
+.page {
+	max-width: 1600px;
+	margin: auto;
+}
+
+main {
+	padding: 0.5em 1em;
+	border-radius: 6px;
+}
+
+aside {
+	padding: 1em;
+	border-radius: 6px;
+}
+
+footer {
+	margin-top: 2em;
+	background: var(--frog-dark);
+	color: ivory;
+	text-align: center;
+	padding: 1em;
+}
+
+section,
+.-full {
+	width: 100%;
+}
+
+/*this should be mobile first */
+@media (--mob) {
+	main {
+		padding: 0.5em 0.25em;
+	}
+}

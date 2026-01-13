@@ -1,0 +1,58 @@
+body, html {
+    margin:0;
+    padding: 0;
+}
+
+/* ========================================================= */
+/*  CRITICAL MINIMAL RESET – <1.5 KB, ZERO CLS, MAX SPEED     */
+/*  For modern browsers + your Handlee typography system     */
+/* ========================================================= */
+
+
+/* 1. Box model & borders */
+*,*::before,*::after{box-sizing:border-box;border:0 solid currentColor}
+*::before,*::after{--tw-content:''}
+
+/* 2. Root defaults */
+html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:system-ui,sans-serif;overflow-y:scroll;}
+
+/* 3. Body */
+body{margin:0;line-height:inherit;font-family:inherit}
+
+/* 4. Typography */
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,figure{margin:0;font-size:inherit;font-weight:inherit}
+hr{height:0;color:inherit;border-top:1px solid}
+b,strong{font-weight:bolder}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em} sup{top:-.5em}
+
+/* 5. Links */
+a{color:inherit;text-decoration:inherit}
+
+/* 6. Lists */
+ul,ol,menu,dl,dd{list-style:none;margin:0;padding:0}
+
+/* 7. Forms */
+button,input,select,textarea{font:inherit;color:inherit;margin:0;padding:0}
+button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;background:transparent}
+button,[role="button"]{cursor:pointer}
+:disabled{cursor:default}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+
+/* 8. Media */
+img,video,svg,canvas{max-width:100%;height:auto;display:block}
+
+/* 9. Tables */
+table{border-collapse:collapse;border-color:inherit}
+
+/* 10. Focus (a11y) */
+:focus-visible{outline:2px solid;outline-offset:2px}
+
+/* 11. Reduced motion */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ========================================================= */
+/*  END OF CRITICAL RESET                                    */
+/* ========================================================= */

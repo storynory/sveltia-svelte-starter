@@ -1,0 +1,74 @@
+/* List styling for article content */
+article ul {
+	padding: 1em 0; /* Aligned with space */
+}
+
+ol li,
+article ul li {
+	list-style-type: none;
+	padding-left: 1em;
+	font-family: 'Georgia', serif;
+	position: relative;
+	/*display: flex; */
+	align-items: center; /* Vertically centers text and bullet */
+}
+
+article ol li::before,
+article ul li::before {
+	content: '•'; /* Custom bullet */
+	position: relative; /* Removed absolute positioning */
+	margin-right: 0.5em; /* Added spacing between bullet and text */
+	font-size: 1.2em; /* Slightly larger bullet size */
+	color: blue; /* Custom bullet color */
+}
+
+ dl {
+    padding: 1em;
+}
+
+dd {
+    padding-bottom: 1em;
+}
+
+
+article ol {
+	counter-reset: list-counter; /* Initialize custom counter */
+}
+
+article ol li::before {
+	content: counter(list-counter) '.'; /* Custom numbering with counter */
+	counter-increment: list-counter; /* Increment counter for each item */
+	font-size: 1em;
+}
+
+.breadcrumb {
+	list-style: none;
+	display: flex;
+	padding: 0.5em 0;
+	margin: 0.5em 0;
+}
+
+.breadcrumb li {
+	display: flex;
+	align-items: center;
+}
+
+.breadcrumb li:before {
+	content: '';
+}
+
+.breadcrumb li + li::before {
+	content: '/';
+	margin-right: 0.75rem;
+	color: #6c757d;
+	font-size: 0.75rem;
+}
+
+.breadcrumb li[aria-current='page'] {
+	font-weight: 700;
+}
+
+.breadcrumb li[aria-current='page'] a {
+	pointer-events: none;
+	cursor: default;
+}

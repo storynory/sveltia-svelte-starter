@@ -1,0 +1,94 @@
+/* Base elements */
+article {
+	padding: 0 0.25em;
+}
+
+.page,
+main {
+	display: block;
+	margin: 0 auto;
+	overflow-x: hidden; /* or clip, but keep comment in sync */
+}
+
+/* Centred page container */
+.page {
+	max-width: 1600px;
+}
+
+main {
+	padding: 0.5em 0.25em;
+	border-radius: 6px;
+}
+
+section,
+.-full {
+	width: 100%;
+}
+
+/* Components */
+aside {
+	padding: 1em;
+	border-radius: 6px;
+}
+
+footer {
+	margin-top: 2em;
+	background: var(--frog-dark);
+	color: ivory;
+	text-align: center;
+	padding: 1em;
+}
+
+/* Utilities */
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Desktop enhancements */
+@media (--desk) {
+	.grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.card {
+		width: 100%;
+		max-width: 800px;
+		margin-bottom: 1em;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+		padding: 0.5em 1em 0 1em;
+		border-radius: 6px;
+	}
+
+	.articleLayout {
+		display: grid;
+		grid-template-columns: minmax(0, 3fr) minmax(0, 1.2fr);
+		gap: 1.5em;
+		align-items: flex-start;
+		margin: 0 auto;
+		padding-right: 2em;
+		max-width: 1200px;
+		border-right: 2px solid var(--frog);
+	}
+
+	article {
+		width: 100%;
+		padding: 0.5em 2em;
+		border-left: 2px solid var(--frog);
+		border-right: 2px solid var(--frog); /*best with or without? */
+	}
+
+	section {
+		padding-top: 0.5em;
+	}
+
+	main {
+		padding: 0.5em 1em;
+	}
+}

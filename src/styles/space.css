@@ -1,0 +1,82 @@
+/* Padding classes */
+.-p {
+	padding: 0.5em;
+}
+
+.p-b {
+    padding-bottom: 1em;
+}
+
+.-p-x {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.-p-r {
+	padding-right: 0.5em;
+}
+
+.-p-y {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.-p-b {
+	padding-bottom: 0.5em;
+}
+
+.-p-lg {
+	padding: 1em;
+}
+
+.-p-lg-x {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.-p-lg-y {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	scroll-padding-top: 1em;
+}
+
+/* Margin classes */
+.-m {
+	margin: 1em;
+}
+
+.-m-b {
+	margin-bottom: 1em;
+}
+
+.-m-x {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.-m-y {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.-m-lg {
+	margin: 1em;
+}
+
+.-m-lg-x {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.-m-lg-y {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.center,
+.m-auto {
+	margin: auto;
+}
+
+/*qualifiers*/
+

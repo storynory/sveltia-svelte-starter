@@ -1,0 +1,24 @@
+.--brd-none {
+	border: 0px transparent;
+}
+
+.--vis-none {
+	position: absolute;
+	left: -3000px;
+}
+
+.--txt-center {
+	text-align: center;
+}
+
+.--txt-left {
+	text-align: left;
+}
+
+.--center {
+	margin: auto;
+}
+
+.--full {
+	width: 100%;
+}

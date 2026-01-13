@@ -1,0 +1,5 @@
+
+@custom-media --mob (width <= 480px);
+@custom-media --tab (width >= 481px);
+@custom-media --desk (width >= 769px);
+@custom-media --desk-lg (width >= 1200px);
