@@ -7,9 +7,9 @@ mp3: ''
 duration: ''
 length: ''
 talent:
-  - Jana
+  - jana
 tags:
-  - Poems
+  - poems
 ---
 THE GRASSHOPPER By Anacreon
 

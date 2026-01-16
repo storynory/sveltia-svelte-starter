@@ -7,9 +7,9 @@ mp3: chant-canticle-assisi.mp3
 duration: ''
 length: ''
 talent:
-  - Jana
+  - jana
 tags:
-  - Prayers
+  - prayers
 ---
 When St Francis of Assisi was ageing and going blind, he wrote these words: a celebration of his brothers and sisters, the Sun, the Moon, Light, Animals, flowers, Fire and Water - all of them God's creations. The words are some of the most moving and elemental ever written. We are releasing our serene version in time for the Feast of St Francis on October 4th.
 

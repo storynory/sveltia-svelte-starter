@@ -7,9 +7,9 @@ mp3: ''
 duration: ''
 length: ''
 talent:
-  - Jana
+  - jana
 tags:
-  - Poems
+  - poems
 ---
 Hello, this is Jana, and welcome to Relaxivity, a place where you can spend a little time for yourself. We bring you stories of a quiet, spiritual nature, as well as poems and meditations. Listen when you want to relax or fall asleep.
 
