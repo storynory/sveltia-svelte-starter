@@ -1,10 +1,10 @@
-<div class="top fixed">
+<div class="top">
 	<div class="full topNav">
 		<nav class="txt-right page -p">
 			<a href="/">Home</a> /
-			<a href="/pages/about/">About / </a>
+			<a href="/posts/about-relaxivity">About / </a>
 			<a href="/search/">Search / </a>
-			<a href="/podcast/">Podcast</a>
+			<a href="/posts/podcast">Podcast</a>
 		</nav>
 	</div>
 

@@ -1,0 +1,63 @@
+name: settings
+label: Settings
+files:
+  - label: Site Settings
+    name: site
+    file: content/settings/site.md
+    format: frontmatter
+    fields:
+      - label: Site Title
+        name: siteTitle
+        widget: string
+        required: false
+        default: Site Title
+
+      - label: Site Description
+        name: siteDescription
+        widget: text
+        required: false
+
+      - label: Default Share Image
+        name: defaultImage
+        widget: image
+        required: false
+
+      - label: Colour Scheme
+        name: activeColorScheme
+        widget: relation
+        collection: colorSchemes
+        multiple: false
+        required: false
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title]
+
+      - label: Headings Font
+        name: activeHeadingsFont
+        widget: relation
+        collection: fonts
+        multiple: false
+        required: false
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title]
+
+      - label: Body Font
+        name: activeBodyFont
+        widget: relation
+        collection: fonts
+        multiple: false
+        required: false
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title]
+
+      - label: Typography
+        name: activeTypography
+        widget: relation
+        collection: typography
+        multiple: false
+        required: false
+        value_field: "{{slug}}"
+        display_fields: [title]
+        search_fields: [title]

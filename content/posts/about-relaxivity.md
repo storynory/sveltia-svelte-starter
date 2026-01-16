@@ -1,7 +1,8 @@
 ---
-draft: true
+draft: false
 title: About Relaxivity
 featuredImage: ''
-tags: []
+tags:
+  - about
 ---
-
+Welcome to the home of relaxing audio

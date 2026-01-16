@@ -3,10 +3,8 @@
 backend:
   name: github
   repo: storynory/starter
-
 media_folder: content/uploads
 public_folder: /uploads
-
 collections:
   - name: tags
     label: Tags
@@ -19,23 +17,20 @@ collections:
         name: title
         widget: string
         required: true
-
       - label: Slug
         name: slug
         widget: string
         required: false
-        hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
-
+        hint: Optional. Leave blank to auto-generate. Must be unique; used for
+          relations.
       - label: Description
         name: description
         widget: markdown
         required: false
-
       - label: Thumb
         name: categoryImage
         widget: image
         required: false
-
   - name: people
     label: People
     folder: content/people
@@ -47,64 +42,59 @@ collections:
         name: name
         widget: string
         required: true
-
       - label: Slug
         name: slug
         widget: string
         required: false
-        hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
-
+        hint: Optional. Leave blank to auto-generate. Must be unique; used for
+          relations.
       - label: Role
         name: role
         widget: string
         required: false
-
       - label: Bio
         name: bio
         widget: markdown
         required: false
-
       - label: Headshot
         name: headshot
         widget: image
         required: false
-
   - name: posts
     label: Posts
     folder: content/posts
     format: frontmatter
+    slug: "{{title | slug}}"
     fields:
       - label: Draft
         name: draft
         widget: boolean
         default: true
-
       - label: Title
         name: title
         widget: string
         required: true
-
       - label: Body
         name: body
         widget: markdown
         required: false
-
       - label: Thumb
         name: featuredImage
         widget: image
         required: false
-
       - label: Tags
         name: tags
         widget: relation
         collection: tags
         value_field: "{{slug}}"
-        display_fields: [title]
-        search_fields: [title, description]
+        display_fields:
+          - title
+        search_fields:
+          - title
+          - description
         multiple: true
         required: false
         dropdown_threshold: 12
-
   - name: podcasts
     label: Podcasts
     icon: mic
@@ -120,70 +110,39 @@ collections:
       - name: title
         label: Title
         widget: string
-
       - name: draft
         label: Draft
         widget: boolean
         required: false
-
       - name: description
         label: Description
         widget: markdown
         required: false
-
       - name: body
         label: Body
         widget: markdown
         required: false
-
       - name: date
         label: Publish Date
         widget: datetime
-        format: "YYYY-MM-DDTHH:mm:ssZ"
+        format: YYYY-MM-DDTHH:mm:ssZ
         required: false
-
       - name: thumb
         label: Episode Artwork
         widget: image
         required: false
-
       - name: mp3
         label: MP3 File
         widget: string
         required: false
-
       - name: duration
         label: Duration
         widget: string
         required: false
-
       - name: length
         label: File Size
         widget: string
         required: false
-
-      - name: talent
-        label: People taking part
-        widget: relation
-        collection: people
-        multiple: true
-        search_fields: [name, role]
-        value_field: "{{slug}}"
-        display_fields: [name, role]
-        required: false
-        dropdown_threshold: 12
-
-      - label: Tags
-        name: tags
-        widget: relation
-        collection: tags
-        value_field: "{{slug}}"
-        display_fields: [title]
-        search_fields: [title, description]
-        multiple: true
-        required: false
-        dropdown_threshold: 12
-
   - name: fonts
     label: Fonts
     folder: content/fonts
@@ -198,21 +157,21 @@ collections:
       - name: title
         label: Preset name
         widget: string
-        hint: "A friendly name you’ll recognise later (e.g. Comfortaa + System, Serif Headings, Classic Bookish)."
-
+        hint: A friendly name you’ll recognise later (e.g. Comfortaa + System, Serif
+          Headings, Classic Bookish).
       - name: slug
         label: Slug
         widget: string
         required: false
-        hint: "Optional. If blank, Sveltia will generate it from the preset name."
-
+        hint: Optional. If blank, Sveltia will generate it from the preset name.
       - name: stack
         label: Font Stack
         widget: string
         required: false
-        default: "system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans', 'Helvetica Neue', Arial, sans-serif"
-        hint: "Used for paragraphs and general UI. Put your uploaded font family name first (must match your @font-face)."
-
+        default: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation
+          Sans', 'Helvetica Neue', Arial, sans-serif
+        hint: Used for paragraphs and general UI. Put your uploaded font family name
+          first (must match your @font-face).
       - name: weightHeading
         label: Heading weight (optional)
         widget: number
@@ -222,12 +181,10 @@ collections:
         max: 900
         step: 100
         default: 600
-
       - name: fontFaceNotes
         label: "@font-face note (optional)"
         widget: text
         required: false
-
   - name: typography
     label: Typography
     folder: content/typography
@@ -242,12 +199,10 @@ collections:
       - name: title
         label: Preset name
         widget: string
-
       - name: slug
         label: Slug
         widget: string
         required: false
-
       - name: fontSize
         label: Base font size (px)
         widget: number
@@ -257,7 +212,6 @@ collections:
         max: 20
         step: 1
         default: 16
-
       - name: scale
         label: Modular scale
         widget: number
@@ -267,17 +221,15 @@ collections:
         max: 1.625
         step: 0.025
         default: 1.275
-
       - name: lineHeight
         label: Line height (unitless)
         widget: number
         required: false
         value_type: float
         min: 1.3
-        max: 2.0
+        max: 2
         step: 0.05
         default: 1.6
-
       - name: measure
         label: Max measure (ch)
         widget: number
@@ -287,33 +239,48 @@ collections:
         max: 85
         step: 1
         default: 70
-
       - name: notes
         label: Notes (optional)
         widget: text
         required: false
-
   - name: colorSchemes
     label: Color Schemes
     folder: content/colors
     create: true
     slug: "{{title | slug}}"
     fields:
-      - { name: title, label: Scheme Name, widget: string }
-      - {
-          name: slug,
-          label: Slug,
-          widget: string,
-          required: false,
-          hint: "Optional. Used for relations. Keep unique.",
-        }
-      - { label: Prime, name: prime, widget: color, default: "#e3d2b7" }
-      - { label: Accent, name: accent, widget: color, default: "#00634e" }
-      - { label: Second, name: second, widget: color, default: "#f4e8d7" }
-      - { label: Gray, name: gray, widget: color, default: "#f8f9fa" }
-      - { label: Text, name: text, widget: color, default: "#333333" }
-      - { label: Light, name: light, widget: color, default: "#ffffff" }
-
+      - name: title
+        label: Scheme Name
+        widget: string
+      - name: slug
+        label: Slug
+        widget: string
+        required: false
+        hint: Optional. Used for relations. Keep unique.
+      - name: prime
+        label: Prime
+        widget: color
+        default: "#e3d2b7"
+      - name: accent
+        label: Accent
+        widget: color
+        default: "#00634e"
+      - name: second
+        label: Second
+        widget: color
+        default: "#f4e8d7"
+      - name: gray
+        label: Gray
+        widget: color
+        default: "#f8f9fa"
+      - name: text
+        label: Text
+        widget: color
+        default: "#333333"
+      - name: light
+        label: Light
+        widget: color
+        default: "#ffffff"
   - name: settings
     label: Settings
     files:
@@ -325,19 +292,16 @@ collections:
           - label: Site Title
             name: siteTitle
             widget: string
-            default: Site Title
             required: false
-
+            default: Site Title
           - label: Site Description
             name: siteDescription
             widget: text
             required: false
-
           - label: Default Share Image
             name: defaultImage
             widget: image
             required: false
-
           - label: Colour Scheme
             name: activeColorScheme
             widget: relation
@@ -345,9 +309,10 @@ collections:
             multiple: false
             required: false
             value_field: "{{slug}}"
-            display_fields: [title]
-            search_fields: [title]
-
+            display_fields:
+              - title
+            search_fields:
+              - title
           - label: Headings Font
             name: activeHeadingsFont
             widget: relation
@@ -355,9 +320,10 @@ collections:
             multiple: false
             required: false
             value_field: "{{slug}}"
-            display_fields: [title]
-            search_fields: [title]
-
+            display_fields:
+              - title
+            search_fields:
+              - title
           - label: Body Font
             name: activeBodyFont
             widget: relation
@@ -365,9 +331,10 @@ collections:
             multiple: false
             required: false
             value_field: "{{slug}}"
-            display_fields: [title]
-            search_fields: [title]
-
+            display_fields:
+              - title
+            search_fields:
+              - title
           - label: Typography
             name: activeTypography
             widget: relation
@@ -375,5 +342,7 @@ collections:
             multiple: false
             required: false
             value_field: "{{slug}}"
-            display_fields: [title]
-            search_fields: [title]
+            display_fields:
+              - title
+            search_fields:
+              - title

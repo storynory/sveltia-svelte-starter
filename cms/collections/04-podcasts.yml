@@ -1,0 +1,57 @@
+name: podcasts
+label: Podcasts
+icon: mic
+label_singular: Episode
+description: Podcast episodes with metadata and linked interviewees.
+folder: content/podcasts
+create: true
+hide: false
+delete: true
+slug: "{{title | slug}}"
+summary: "{{title}} — {{talent | join(', ')}}"
+
+fields:
+  - name: title
+    label: Title
+    widget: string
+
+  - name: draft
+    label: Draft
+    widget: boolean
+    required: false
+
+  - name: description
+    label: Description
+    widget: markdown
+    required: false
+
+  - name: body
+    label: Body
+    widget: markdown
+    required: false
+
+  - name: date
+    label: Publish Date
+    widget: datetime
+    format: "YYYY-MM-DDTHH:mm:ssZ"
+    required: false
+
+  - name: thumb
+    label: Episode Artwork
+    widget: image
+    required: false
+
+  - name: mp3
+    label: MP3 File
+    widget: string
+    required: false
+
+  - name: duration
+    label: Duration
+    widget: string
+    required: false
+
+  - name: length
+    label: File Size
+    widget: string
+    required: false

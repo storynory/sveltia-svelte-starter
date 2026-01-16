@@ -1,0 +1,43 @@
+- name: fonts
+  label: Fonts
+  folder: content/fonts
+  create: true
+  slug: "{{title | slug}}"
+  extension: md
+  format: frontmatter
+  editor:
+    preview: false
+  summary: "{{fields.title}}"
+  fields:
+    - name: title
+      label: Preset name
+      widget: string
+      hint: "A friendly name you’ll recognise later (e.g. Comfortaa + System, Serif Headings, Classic Bookish)."
+
+    - name: slug
+      label: Slug
+      widget: string
+      required: false
+      hint: "Optional. If blank, Sveltia will generate it from the preset name."
+
+    - name: stack
+      label: Font Stack
+      widget: string
+      required: false
+      default: "system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans', 'Helvetica Neue', Arial, sans-serif"
+      hint: "Used for paragraphs and general UI. Put your uploaded font family name first (must match your @font-face)."
+
+    - name: weightHeading
+      label: Heading weight (optional)
+      widget: number
+      required: false
+      value_type: int
+      min: 400
+      max: 900
+      step: 100
+      default: 600
+
+    - name: fontFaceNotes
+      label: "@font-face note (optional)"
+      widget: text
+      required: false

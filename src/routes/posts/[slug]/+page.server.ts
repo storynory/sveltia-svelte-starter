@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
-import { getPost, getTags, joinPostsWithTags } from '$lib/server/content/api.generated';
 import type { PageServerLoad } from './$types';
+import { getPost, getTags } from '$lib/server/content/api.generated';
+import { marked } from 'marked';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const post = await getPost(params.slug);
@@ -9,8 +10,10 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, 'Not found');
 	}
 
-	const tags = await getTags();
-	const [postWithTags] = joinPostsWithTags([post], tags);
-
-	return { post: postWithTags };
+	return {
+		post: {
+			...post,
+			body: marked.parse(post.body)
+		}
+	};
 };

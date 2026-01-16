@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import type { ColorScheme, Typography } from '$lib/content/types.generated';
-
+	import Footer from '$lib/components/footer/footer.svelte';
 	let { data, children } = $props();
 
 	const scheme = $derived(data.scheme as ColorScheme);

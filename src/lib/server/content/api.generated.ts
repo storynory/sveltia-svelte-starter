@@ -139,8 +139,6 @@ function mapPodcast(row: ReadResult): Podcast {
 		mp3: asString(data['mp3']),
 		duration: asString(data['duration']),
 		length: asString(data['length']),
-		talent: asStringArray(data['talent']),
-		tags: asStringArray(data['tags']),
 		body,
 		excerpt: body ? body.slice(0, 200) : ''
 	};
@@ -162,32 +160,6 @@ export async function getPodcast(slug: string, opts: { includeDrafts?: boolean }
 		if ((item as any).draft === true) return null;
 	}
 	return item;
-}
-
-export function joinPodcastsWithPeople(podcasts: Podcast[], people: Person[]): Podcast[] {
-	const index = new Map(people.map((t) => [t.slug, t] as const));
-	return podcasts.map((p) => {
-		const resolved = Array.isArray((p as any)['talent'])
-			? ((p as any)['talent'] as unknown[])
-				.filter((s): s is string => typeof s === 'string')
-				.map((s) => index.get(s))
-				.filter(Boolean)
-			: [];
-		return { ...(p as any), talentObjects: resolved } as Podcast;
-	});
-}
-
-export function joinPodcastsWithTags(podcasts: Podcast[], tags: Tag[]): Podcast[] {
-	const index = new Map(tags.map((t) => [t.slug, t] as const));
-	return podcasts.map((p) => {
-		const resolved = Array.isArray((p as any)['tags'])
-			? ((p as any)['tags'] as unknown[])
-				.filter((s): s is string => typeof s === 'string')
-				.map((s) => index.get(s))
-				.filter(Boolean)
-			: [];
-		return { ...(p as any), tagsObjects: resolved } as Podcast;
-	});
 }
 
 function mapFont(row: ReadResult): Font {

@@ -1,0 +1,6 @@
+backend:
+  name: github
+  repo: storynory/starter
+
+media_folder: content/uploads
+public_folder: /uploads

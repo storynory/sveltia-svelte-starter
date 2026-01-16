@@ -1,0 +1,32 @@
+name: people
+label: People
+folder: content/people
+format: frontmatter
+create: true
+slug: "{{name | slug}}"
+fields:
+  - label: Name
+    name: name
+    widget: string
+    required: true
+
+  - label: Slug
+    name: slug
+    widget: string
+    required: false
+    hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
+
+  - label: Role
+    name: role
+    widget: string
+    required: false
+
+  - label: Bio
+    name: bio
+    widget: markdown
+    required: false
+
+  - label: Headshot
+    name: headshot
+    widget: image
+    required: false

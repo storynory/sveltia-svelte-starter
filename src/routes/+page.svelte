@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Header from '$lib/components/header/header.svelte';
+	import Footer from '$lib/components/footer/footer.svelte';
 	import type { Podcast } from '$lib/content/types.generated';
 	import Picture from '$lib/components/PictureGrid.svelte';
+
 	let { data } = $props();
 	let posts = $derived(data.posts as Podcast[]);
 </script>
@@ -22,13 +24,9 @@
 			{/each}
 		</ul>
 	</div>
+	<Footer />
 </main>
+<p>Hello?</p>
 
 <style>
-	main {
-		width: 100%;
-		position: relative;
-		top: 200px;
-		z-index: 1;
-	}
 </style>

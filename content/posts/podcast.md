@@ -1,7 +1,8 @@
 ---
-draft: true
+draft: false
 title: Podcast
 featuredImage: ''
-tags: []
+tags:
+  - about
 ---
-
+How to get this podcast welcome

@@ -1,0 +1,45 @@
+name: colorSchemes
+label: Color Schemes
+folder: content/colors
+create: true
+slug: "{{title | slug}}"
+fields:
+  - name: title
+    label: Scheme Name
+    widget: string
+
+  - name: slug
+    label: Slug
+    widget: string
+    required: false
+    hint: "Optional. Used for relations. Keep unique."
+
+  - name: prime
+    label: Prime
+    widget: color
+    default: "#e3d2b7"
+
+  - name: accent
+    label: Accent
+    widget: color
+    default: "#00634e"
+
+  - name: second
+    label: Second
+    widget: color
+    default: "#f4e8d7"
+
+  - name: gray
+    label: Gray
+    widget: color
+    default: "#f8f9fa"
+
+  - name: text
+    label: Text
+    widget: color
+    default: "#333333"
+
+  - name: light
+    label: Light
+    widget: color
+    default: "#ffffff"

@@ -1,0 +1,27 @@
+name: tags
+label: Tags
+folder: content/tags
+format: frontmatter
+create: true
+slug: "{{title | slug}}"
+fields:
+  - label: Title
+    name: title
+    widget: string
+    required: true
+
+  - label: Slug
+    name: slug
+    widget: string
+    required: false
+    hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
+
+  - label: Description
+    name: description
+    widget: markdown
+    required: false
+
+  - label: Thumb
+    name: categoryImage
+    widget: image
+    required: false
