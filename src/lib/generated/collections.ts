@@ -29,10 +29,10 @@ export type FilesCollectionDef = {
 export type CollectionDef = FolderCollectionDef | FilesCollectionDef;
 
 export const collections = {
-  "posts": {
-    "name": "posts",
+  "tags": {
+    "name": "tags",
     "kind": "folder",
-    "folder": "content/posts",
+    "folder": "content/tags",
     "format": "markdown",
     "extension": "md"
   },
@@ -43,17 +43,17 @@ export const collections = {
     "format": "markdown",
     "extension": "md"
   },
+  "posts": {
+    "name": "posts",
+    "kind": "folder",
+    "folder": "content/posts",
+    "format": "markdown",
+    "extension": "md"
+  },
   "podcasts": {
     "name": "podcasts",
     "kind": "folder",
     "folder": "content/podcasts",
-    "format": "markdown",
-    "extension": "md"
-  },
-  "tags": {
-    "name": "tags",
-    "kind": "folder",
-    "folder": "content/tags",
     "format": "markdown",
     "extension": "md"
   },

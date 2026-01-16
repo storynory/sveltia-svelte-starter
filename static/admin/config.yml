@@ -8,6 +8,67 @@ media_folder: content/uploads
 public_folder: /uploads
 
 collections:
+  - name: tags
+    label: Tags
+    folder: content/tags
+    format: frontmatter
+    create: true
+    slug: "{{title | slug}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        required: true
+
+      - label: Slug
+        name: slug
+        widget: string
+        required: false
+        hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
+
+      - label: Description
+        name: description
+        widget: markdown
+        required: false
+
+      - label: Thumb
+        name: categoryImage
+        widget: image
+        required: false
+
+  - name: people
+    label: People
+    folder: content/people
+    format: frontmatter
+    create: true
+    slug: "{{name | slug}}"
+    fields:
+      - label: Name
+        name: name
+        widget: string
+        required: true
+
+      - label: Slug
+        name: slug
+        widget: string
+        required: false
+        hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
+
+      - label: Role
+        name: role
+        widget: string
+        required: false
+
+      - label: Bio
+        name: bio
+        widget: markdown
+        required: false
+
+      - label: Headshot
+        name: headshot
+        widget: image
+        required: false
+
   - name: posts
     label: Posts
     folder: content/posts
@@ -43,39 +104,6 @@ collections:
         multiple: true
         required: false
         dropdown_threshold: 12
-
-  - name: people
-    label: People
-    folder: content/people
-    format: frontmatter
-    create: true
-    slug: "{{name | slug}}"
-    fields:
-      - label: Name
-        name: name
-        widget: string
-        required: true
-
-      - label: Slug
-        name: slug
-        widget: string
-        required: false
-        hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
-
-      - label: Role
-        name: role
-        widget: string
-        required: false
-
-      - label: Bio
-        name: bio
-        widget: markdown
-        required: false
-
-      - label: Headshot
-        name: headshot
-        widget: image
-        required: false
 
   - name: podcasts
     label: Podcasts
@@ -155,34 +183,6 @@ collections:
         multiple: true
         required: false
         dropdown_threshold: 12
-
-  - name: tags
-    label: Tags
-    folder: content/tags
-    format: frontmatter
-    create: true
-    slug: "{{title | slug}}"
-    fields:
-      - label: Title
-        name: title
-        widget: string
-        required: true
-
-      - label: Slug
-        name: slug
-        widget: string
-        required: false
-        hint: "Optional. Leave blank to auto-generate. Must be unique; used for relations."
-
-      - label: Description
-        name: description
-        widget: markdown
-        required: false
-
-      - label: Thumb
-        name: categoryImage
-        widget: image
-        required: false
 
   - name: fonts
     label: Fonts

@@ -2,21 +2,12 @@ import { getPodcasts, getTags, getPeople } from '$lib/server/content/api.generat
 import { join } from '$lib/server/content/helpers';
 
 export async function load() {
-	let podcasts = await getPodcasts();
+	const podcasts = await getPodcasts();
 	const tags = await getTags();
-	const talent = await getPeople();
+	const people = await getPeople();
 
-	podcasts = join(podcasts, tags, {
-		field: 'slug',
-		multiple: true
-	});
+	const podcastsWithTags = join(podcasts, tags, { field: 'tags' });
+	const podcastsWithAll = join(podcastsWithTags, people, { field: 'talent' });
 
-	podcasts = join(podcasts, talent, {
-		field: 'slug',
-		multiple: true
-	});
-
-	console.log(tags[0]);
-	console.log(talent[0]);
-	return { posts: podcasts }; // keeping your "posts" naming
+	return { posts: podcastsWithAll }; // keeping your "posts" naming
 }

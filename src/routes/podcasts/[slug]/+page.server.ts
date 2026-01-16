@@ -1,15 +1,19 @@
 import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import { getPodcast, getTags } from '$lib/server/content/api.generated';
 import { marked } from 'marked';
 
-export async function load({ params }) {
+export const load: PageServerLoad = async ({ params }) => {
 	const podcast = await getPodcast(params.slug);
-
-	podcast.body = marked.parse(podcast.body);
 
 	if (!podcast) {
 		throw error(404, 'Not found');
 	}
 
-	return { post: podcast };
-}
+	return {
+		post: {
+			...podcast,
+			body: marked.parse(podcast.body)
+		}
+	};
+};

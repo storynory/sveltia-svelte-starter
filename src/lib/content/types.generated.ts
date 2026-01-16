@@ -8,12 +8,11 @@
 
 export type Slug = string;
 
-export type Post = {
+export type Tag = {
 	slug: Slug;
-	draft: boolean;
 	title: string;
-	featuredImage?: string;
-	tags?: string[];
+	description?: string;
+	categoryImage?: string;
 	body: string;
 	excerpt: string;
 };
@@ -24,6 +23,16 @@ export type Person = {
 	role?: string;
 	bio?: string;
 	headshot?: string;
+	body: string;
+	excerpt: string;
+};
+
+export type Post = {
+	slug: Slug;
+	draft: boolean;
+	title: string;
+	featuredImage?: string;
+	tags?: string[];
 	body: string;
 	excerpt: string;
 };
@@ -40,15 +49,6 @@ export type Podcast = {
 	length?: string;
 	talent?: string[];
 	tags?: string[];
-	body: string;
-	excerpt: string;
-};
-
-export type Tag = {
-	slug: Slug;
-	title: string;
-	description?: string;
-	categoryImage?: string;
 	body: string;
 	excerpt: string;
 };

@@ -177,3 +177,61 @@ export function pick<T extends Record<string, any>, K extends keyof T>(item: T, 
 	for (const k of keys) out[k] = item[k];
 	return out as Pick<T, K>;
 }
+
+type PrimitiveKey = string | number;
+
+type JoinSpec<TItem extends Record<string, unknown>, TTarget extends Record<string, unknown>> = {
+	field: keyof TItem & string;
+	target: TTarget[];
+	targetKey: keyof TTarget & string;
+	outField?: string;
+	multiple?: boolean;
+};
+
+export function joinMany<TItem extends Record<string, unknown>>(
+	items: TItem[],
+	specs: Array<JoinSpec<TItem, Record<string, unknown>>>
+): TItem[] {
+	const indexed = specs.map((spec) => {
+		const index = new Map<PrimitiveKey, Record<string, unknown>>();
+
+		for (const obj of spec.target ?? []) {
+			const key = obj[spec.targetKey];
+			if (typeof key === 'string' || typeof key === 'number') {
+				index.set(key, obj);
+			}
+		}
+
+		return {
+			...spec,
+			index,
+			outField: spec.outField ?? `${spec.field}Objects`
+		};
+	});
+
+	return items.map((item) => {
+		const next: Record<string, unknown> = { ...item };
+
+		for (const spec of indexed) {
+			const raw = item[spec.field];
+
+			const isMultiple = typeof spec.multiple === 'boolean' ? spec.multiple : Array.isArray(raw);
+
+			if (isMultiple) {
+				const values: PrimitiveKey[] = Array.isArray(raw)
+					? raw.filter((v): v is PrimitiveKey => typeof v === 'string' || typeof v === 'number')
+					: [];
+
+				next[spec.outField] = values.map((v) => spec.index.get(v)).filter(Boolean);
+			} else {
+				if (typeof raw === 'string' || typeof raw === 'number') {
+					next[spec.outField] = spec.index.get(raw) ?? null;
+				} else {
+					next[spec.outField] = null;
+				}
+			}
+		}
+
+		return next as TItem;
+	});
+}
