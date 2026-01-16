@@ -15,8 +15,7 @@ export default defineConfig({
 			},
 
 			drafts: {
-				customMedia: true,
-				nesting: true
+				customMedia: true
 			}
 		}
 	}

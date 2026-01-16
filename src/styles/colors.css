@@ -2,66 +2,75 @@
 	--prime: #00634e;
 	--accent: #6666ff;
 	--light: ivory;
-	--frog-dark: #00634e; /* darker, better contrast for text .... fall back in case I've not switched to prime*/
-	--gray-light: #f8f9fa;
+	--gray: #f8f9fa;
+	--text: #333;
 }
 
-body {
-	color: #333;
+/***********  Text Colors **************/
+
+.txt-prime {
+	color: var(--prime);
 }
 
-.bg-prime {
-	background-color: var(--prime);
-}
-
-.bg-prime,
-.bg-frog-dark {
-	background-color: var(--frog-dark);
-}
-
-.clr-accent {
+.txt-accent {
 	color: var(--accent);
 }
 
-.text-light,
-.txt-white {
-	color: var(--light);
+.txt-light {
+	color: var(--accent);
 }
 
-.bg-gray {
-	background-color: var(--gray-light);
-}
-
-.bg-light,
-.bg-white {
-	background-color: var(--light);
-}
-
-.brd-tp {
-	border-top: 1px solid var(--frog-dark);
-}
-
-.bx-shadow {
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.txt,
+p,
+span {
+	color: var(--text);
 }
 
 h1,
 h2,
 h3,
 h4,
-h1,
-a h1,
-a h2,
-a h3,
-a h4 {
-	color: #333;
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a {
+	color: var(--text);
 }
+
+/******** Links and Buttons Colors *****************/
 
 a {
 	color: var(--prime);
 }
 
 a:hover {
-	color: var(--accent);
+	color: var(--second);
 }
 
+/***************** Background Colors ******************/
+
+.bg-prime {
+	background-color: var(--prime);
+}
+
+.bg-accent {
+	background-color: var(--accent);
+}
+
+.bg-gray {
+	background-color: var(--gray);
+}
+
+.bg-light {
+	background-color: var(--light);
+}
+
+/********** Borders and Shadows ***************/
+
+.brd-tp {
+	border-top: 1px solid var(--prime);
+}
+
+.bx-shadow {
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}

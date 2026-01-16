@@ -30,6 +30,7 @@ export type Tag = {
 export type Person = {
 	slug: Slug;
 	name: string;
+	role?: string;
 	bio?: string;
 	photo?: string;
 	body: string;
@@ -39,11 +40,50 @@ export type Person = {
 export type Podcast = {
 	slug: Slug;
 	title: string;
-	date?: string;
+	draft?: boolean;
 	description?: string;
-	audio?: string;
+	date?: string;
+	thumb?: string;
+	mp3?: string;
 	duration?: string;
 	length?: string;
+	talent?: string[];
+	tags?: string[];
+	body: string;
+	excerpt: string;
+};
+
+export type Font = {
+	slug: Slug;
+	title: string;
+	stack?: string;
+	weightHeading?: number;
+	fontFaceNotes?: string;
+	body: string;
+	excerpt: string;
+};
+
+export type Typography = {
+	slug: Slug;
+	title: string;
+	fontSize?: number;
+	scale?: number;
+	lineHeight?: number;
+	measure?: number;
+	notes?: string;
+	body: string;
+	excerpt: string;
+};
+
+export type ColorScheme = {
+	slug: Slug;
+	title: string;
+	prime: unknown;
+	accent: unknown;
+	second: unknown;
+	gray: unknown;
+	text: unknown;
+	light: unknown;
 	body: string;
 	excerpt: string;
 };
@@ -53,7 +93,10 @@ export type SettingsSite = {
 	siteTitle?: string;
 	siteDescription?: string;
 	defaultImage?: string;
-	accentColour?: string;
+	activeColorScheme?: string;
+	activeHeadingsFont?: string;
+	activeBodyFont?: string;
+	activeTypography?: string;
 	body: string;
 };
 

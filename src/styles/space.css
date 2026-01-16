@@ -1,18 +1,27 @@
-/* Padding classes */
+/* =================================
+   Padding utilities
+   base = 0.5em, lg = 1em
+   ================================= */
+
 .-p {
 	padding: 0.5em;
 }
 
-.p-b {
-    padding-bottom: 1em;
+.-p-t {
+	padding-top: 0.5em;
+}
+.-p-r {
+	padding-right: 0.5em;
+}
+.-p-b {
+	padding-bottom: 0.5em;
+}
+.-p-l {
+	padding-left: 0.5em;
 }
 
 .-p-x {
 	padding-left: 0.5em;
-	padding-right: 0.5em;
-}
-
-.-p-r {
 	padding-right: 0.5em;
 }
 
@@ -21,12 +30,23 @@
 	padding-bottom: 0.5em;
 }
 
-.-p-b {
-	padding-bottom: 0.5em;
-}
+/* Large padding */
 
 .-p-lg {
 	padding: 1em;
+}
+
+.-p-lg-t {
+	padding-top: 1em;
+}
+.-p-lg-r {
+	padding-right: 1em;
+}
+.-p-lg-b {
+	padding-bottom: 1em;
+}
+.-p-lg-l {
+	padding-left: 1em;
 }
 
 .-p-lg-x {
@@ -37,16 +57,28 @@
 .-p-lg-y {
 	padding-top: 1em;
 	padding-bottom: 1em;
-	scroll-padding-top: 1em;
 }
 
-/* Margin classes */
+/* =================================
+   Margin utilities
+   base = 1em (matches body rhythm)
+   ================================= */
+
 .-m {
 	margin: 1em;
 }
 
+.-m-t {
+	margin-top: 1em;
+}
+.-m-r {
+	margin-right: 1em;
+}
 .-m-b {
 	margin-bottom: 1em;
+}
+.-m-l {
+	margin-left: 1em;
 }
 
 .-m-x {
@@ -59,24 +91,49 @@
 	margin-bottom: 1em;
 }
 
+/* Large margin (explicit, not redundant) */
+
 .-m-lg {
-	margin: 1em;
+	margin: 2em;
 }
 
 .-m-lg-x {
-	margin-left: 1em;
-	margin-right: 1em;
+	margin-left: 2em;
+	margin-right: 2em;
 }
 
 .-m-lg-y {
-	margin-top: 1em;
-	margin-bottom: 1em;
+	margin-top: 2em;
+	margin-bottom: 2em;
 }
+
+/* =================================
+   Alignment helpers
+   ================================= */
 
 .center,
-.m-auto {
-	margin: auto;
+.-m-auto {
+	margin-left: auto;
+	margin-right: auto;
 }
 
-/*qualifiers*/
+/* =================================
+   Layout spacing (rem-based)
+   Use sparingly – layout edges only
+   ================================= */
 
+.-x-rem {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.-x-rem-lg {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+/* Optional vertical containment */
+.-y-rem {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}

@@ -57,6 +57,27 @@ export const collections = {
     "format": "markdown",
     "extension": "md"
   },
+  "fonts": {
+    "name": "fonts",
+    "kind": "folder",
+    "folder": "content/fonts",
+    "format": "markdown",
+    "extension": "md"
+  },
+  "typography": {
+    "name": "typography",
+    "kind": "folder",
+    "folder": "content/typography",
+    "format": "markdown",
+    "extension": "md"
+  },
+  "colorSchemes": {
+    "name": "colorSchemes",
+    "kind": "folder",
+    "folder": "content/colors",
+    "format": "markdown",
+    "extension": "md"
+  },
   "settings": {
     "name": "settings",
     "kind": "files",

@@ -1,7 +1,8 @@
 import { error } from '@sveltejs/kit';
 import { getPost, getTags, joinPostsWithTags } from '$lib/server/content/api.generated';
+import type { PageServerLoad } from './$types';
 
-export async function load({ params }) {
+export const load: PageServerLoad = async ({ params }) => {
 	const post = await getPost(params.slug);
 
 	if (!post) {
@@ -9,8 +10,7 @@ export async function load({ params }) {
 	}
 
 	const tags = await getTags();
-
 	const [postWithTags] = joinPostsWithTags([post], tags);
 
 	return { post: postWithTags };
-}
+};

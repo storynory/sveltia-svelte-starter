@@ -1,10 +1,22 @@
 ---
 title: The Birth of Buddha
-date: 2026-01-13T09:55:00
-description: |-
-  Read by Jana
+description: An atmospheric telling of the birth of one of the world's great religious figures.
+date: 2026-01-14T13:13:00+00:00
+thumb: /uploads/buddha-videoart.jpg
+mp3: ''
+duration: ''
+length: ''
+talent:
+  - Jana
+tags:
+  - Stories
+---
+Read by Jana
+
   Chants by Jana
+
   Adaptation and production by Bertie
+
   Buddha images courtesy of [Deposit Photos](https://depositphotos.com/)
 
   Hello, this is Jana, and welcome to Relaxivity. In this episode, I will tell you the story of the birth of Buddha. But first, what is the difference between a Buddha and the Buddha?
@@ -77,10 +89,11 @@ description: |-
 
   "Sir," replied the driver, "This man has retired from the world." And after what he had learned about the sadness of life, the idea of retiring from the World intrigued the young man. The Future Buddha returned to his palace, but the splendour no longer uplifted him. Straightaway, richly dressed women, as beautiful as celestial nymphs, gathered about him with all kinds of musical instruments, and with dance, song, and music, they tried to please him. But the Future Buddha was not interested, and he fell into a brief slumber. When the women saw the eyes of the master shut, they, too, lay down while the lamps, fed with sweet-smelling oil, continued to burn. A little later, the Future Buddha awoke and saw these women asleep, with their musical instruments scattered about them on the floor. He noticed some of them were wet with sweat and saliva; some of them with their mouths open, snoring, grinding teeth, and muttering in their sleep; and some of them with their dresses falling apart to reveal their nakedness. This change in their appearance increased his aversion to sensual pleasures. To him, that magnificent apartment seemed like a cemetery filled with dead bodies left to rot.
 
-  ```plain
-  "How oppressive and stifling it all is!" he exclaimed. He called his faithful attendant, Channa, to ready his mighty horse, Kanthaka. And when Kanthaka felt how Channa saddled him up tightly, he realised it was not a typical day when he went for a ride in the park. 
+  \`\`\`plain
 
-  ```
+  "How oppressive and stifling it all is!" he exclaimed. He called his faithful attendant, Channa, to ready his mighty horse, Kanthaka. And when Kanthaka felt how Channa saddled him up tightly, he realised it was not a typical day when he went for a ride in the park.
+
+  \`\`\`
 
   "It must be that today my master will retire from the world," he thought. And in his delight, he neighed loudly.
 
@@ -95,8 +108,5 @@ description: |-
   And that was the story of The Birth of Buddha and the Four Signs read by me, Jana, for Relaxivity. I hope you find our spiritual stories both absorbing and relaxing. We are building a collection that covers many cultures, religions and ideas. Keep listening to enrich your life.
 
   Source for our adaptation: Buddhism in Translations, by Henry Clarke Warren (1854-1899), published in 1896 as Volume III of the Harvard Oriental Series. Thanks for all.
-audio: ''
-duration: ''
-length: ''
----
 
+a

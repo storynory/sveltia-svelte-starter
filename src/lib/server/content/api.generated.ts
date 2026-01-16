@@ -10,6 +10,9 @@ import type {
 	Tag,
 	Person,
 	Podcast,
+	Font,
+	Typography,
+	ColorScheme,
 	SettingsSite,
 } from '$lib/content/types.generated';
 
@@ -105,6 +108,7 @@ function mapPerson(row: ReadResult): Person {
 	return {
 		slug: row.meta?.slug ?? '',
 		name: asString(data['name']),
+		role: asString(data['role']),
 		bio: asString(data['bio']),
 		photo: asString(data['photo']),
 		body,
@@ -128,24 +132,139 @@ function mapPodcast(row: ReadResult): Podcast {
 	return {
 		slug: row.meta?.slug ?? '',
 		title: asString(data['title']),
-		date: asString(data['date']),
+		draft: asBoolean(data['draft']),
 		description: asString(data['description']),
-		audio: asString(data['audio']),
+		date: asString(data['date']),
+		thumb: asString(data['thumb']),
+		mp3: asString(data['mp3']),
 		duration: asString(data['duration']),
 		length: asString(data['length']),
+		talent: asStringArray(data['talent']),
+		tags: asStringArray(data['tags']),
 		body,
 		excerpt: body ? body.slice(0, 200) : ''
 	};
 }
 
-export async function getPodcasts(): Promise<Podcast[]> {
+export async function getPodcasts(opts: { includeDrafts?: boolean } = {}): Promise<Podcast[]> {
+	const { includeDrafts = false } = opts;
 	const rows = await readAll('podcasts');
-	return rows.map(mapPodcast);
+	let items = rows.map(mapPodcast);
+	if (!includeDrafts) items = items.filter((p) => (p as any).draft !== true);
+	return items;
 }
 
-export async function getPodcast(slug: string): Promise<Podcast | null> {
+export async function getPodcast(slug: string, opts: { includeDrafts?: boolean } = {}): Promise<Podcast | null> {
 	const row = await readOne('podcasts', slug);
-	return row ? mapPodcast(row) : null;
+	if (!row) return null;
+	const item = mapPodcast(row);
+	if (opts.includeDrafts !== true) {
+		if ((item as any).draft === true) return null;
+	}
+	return item;
+}
+
+export function joinPodcastsWithPeople(podcasts: Podcast[], people: Person[]): Podcast[] {
+	const index = new Map(people.map((t) => [t.slug, t] as const));
+	return podcasts.map((p) => {
+		const resolved = Array.isArray((p as any)['talent'])
+			? ((p as any)['talent'] as unknown[])
+				.filter((s): s is string => typeof s === 'string')
+				.map((s) => index.get(s))
+				.filter(Boolean)
+			: [];
+		return { ...(p as any), talentObjects: resolved } as Podcast;
+	});
+}
+
+export function joinPodcastsWithTags(podcasts: Podcast[], tags: Tag[]): Podcast[] {
+	const index = new Map(tags.map((t) => [t.slug, t] as const));
+	return podcasts.map((p) => {
+		const resolved = Array.isArray((p as any)['tags'])
+			? ((p as any)['tags'] as unknown[])
+				.filter((s): s is string => typeof s === 'string')
+				.map((s) => index.get(s))
+				.filter(Boolean)
+			: [];
+		return { ...(p as any), tagsObjects: resolved } as Podcast;
+	});
+}
+
+function mapFont(row: ReadResult): Font {
+	const data = (row.data ?? {}) as Record<string, unknown>;
+	const body = typeof row.body === 'string' ? row.body : '';
+	return {
+		slug: row.meta?.slug ?? '',
+		title: asString(data['title']),
+		stack: asString(data['stack']),
+		weightHeading: asNumber(data['weightHeading']),
+		fontFaceNotes: asString(data['fontFaceNotes']),
+		body,
+		excerpt: body ? body.slice(0, 200) : ''
+	};
+}
+
+export async function getFonts(): Promise<Font[]> {
+	const rows = await readAll('fonts');
+	return rows.map(mapFont);
+}
+
+export async function getFont(slug: string): Promise<Font | null> {
+	const row = await readOne('fonts', slug);
+	return row ? mapFont(row) : null;
+}
+
+function mapTypography(row: ReadResult): Typography {
+	const data = (row.data ?? {}) as Record<string, unknown>;
+	const body = typeof row.body === 'string' ? row.body : '';
+	return {
+		slug: row.meta?.slug ?? '',
+		title: asString(data['title']),
+		fontSize: asNumber(data['fontSize']),
+		scale: asNumber(data['scale']),
+		lineHeight: asNumber(data['lineHeight']),
+		measure: asNumber(data['measure']),
+		notes: asString(data['notes']),
+		body,
+		excerpt: body ? body.slice(0, 200) : ''
+	};
+}
+
+export async function getTypographyAll(): Promise<Typography[]> {
+	const rows = await readAll('typography');
+	return rows.map(mapTypography);
+}
+
+export async function getTypography(slug: string): Promise<Typography | null> {
+	const row = await readOne('typography', slug);
+	return row ? mapTypography(row) : null;
+}
+
+function mapColorScheme(row: ReadResult): ColorScheme {
+	const data = (row.data ?? {}) as Record<string, unknown>;
+	const body = typeof row.body === 'string' ? row.body : '';
+	return {
+		slug: row.meta?.slug ?? '',
+		title: asString(data['title']),
+		prime: pick(data['prime']),
+		accent: pick(data['accent']),
+		second: pick(data['second']),
+		gray: pick(data['gray']),
+		text: pick(data['text']),
+		light: pick(data['light']),
+		body,
+		excerpt: body ? body.slice(0, 200) : ''
+	};
+}
+
+export async function getColorSchemes(): Promise<ColorScheme[]> {
+	const rows = await readAll('colorSchemes');
+	return rows.map(mapColorScheme);
+}
+
+export async function getColorScheme(slug: string): Promise<ColorScheme | null> {
+	const row = await readOne('colorSchemes', slug);
+	return row ? mapColorScheme(row) : null;
 }
 
 function mapSettingsSite(row: ReadResult): SettingsSite {
@@ -156,7 +275,10 @@ function mapSettingsSite(row: ReadResult): SettingsSite {
 		siteTitle: asString(data['siteTitle']),
 		siteDescription: asString(data['siteDescription']),
 		defaultImage: asString(data['defaultImage']),
-		accentColour: asString(data['accentColour']),
+		activeColorScheme: asString(data['activeColorScheme']),
+		activeHeadingsFont: asString(data['activeHeadingsFont']),
+		activeBodyFont: asString(data['activeBodyFont']),
+		activeTypography: asString(data['activeTypography']),
 		body
 	};
 }

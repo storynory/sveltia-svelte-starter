@@ -106,6 +106,13 @@ function isOptionalField(field) {
 	return field.required === false;
 }
 
+function pluralise(name) {
+	// tiny helper – good enough for your use-case
+	if (name.endsWith('y') && !/[aeiou]y$/i.test(name)) return name.slice(0, -1) + 'ies';
+	if (name.endsWith('s')) return name; // already plural-ish (posts, tags, etc.)
+	return name + 's';
+}
+
 // Avoid duplicate keys: slug/body/excerpt are always provided by our domain model for folder collections.
 function isReservedFieldName(name) {
 	return name === 'slug' || name === 'body' || name === 'excerpt';
@@ -243,8 +250,14 @@ ${typeNames.map((t) => `\t${t},`).join('\n')}
 	for (const col of folderCols) {
 		const name = col.name; // e.g. posts
 		const TypeName = pascalFromCollection(name); // Post
-		const pluralFn = `get${titleCase(name)}`; // getPosts
-		const singleFn = `get${TypeName}`; // getPost
+
+		let pluralFn = `get${titleCase(name)}`; // e.g. getPosts, getPeople, getTypography
+		const singleFn = `get${TypeName}`; // e.g. getPost, getPerson, getTypography
+
+		// Avoid collisions like typography -> getTypography (plural) + getTypography (single)
+		if (pluralFn === singleFn) {
+			pluralFn = `get${TypeName}All`; // e.g. getTypographyAll
+		}
 
 		const fields = Array.isArray(col.fields) ? col.fields : [];
 

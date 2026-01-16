@@ -1,8 +1,17 @@
 ---
 title: The Grasshopper
-date: 2026-01-13T09:53:00
-description: |-
-  THE GRASSHOPPER By Anacreon
+description: A poem from ancient Greece that celebrates the song of a hot summer's day, and the divine in the tiny.
+date: ''
+thumb: /uploads/grasshopper-videoart.jpg
+mp3: ''
+duration: ''
+length: ''
+talent:
+  - Jana
+tags:
+  - Poems
+---
+THE GRASSHOPPER By Anacreon
 
   Hello this is Bertie Fraser
 
@@ -21,29 +30,53 @@ description: |-
   So now you know some background, let's get ready to listen to this enchanting poem, composed some 2,500 years ago.
 
   The Grasshopper, by Anacreon Happy insect! all agree
+
   None can be more bless'd than thee;
+
   Thou, for joy and pleasure born,
+
   Sipp'st the honey'd dew of morn.
+
   Happier than the sceptred king,
+
   Mid the boughs we hear thee sing.
+
   All the season's varied store,
+
   All thy little eyes explore,
+
   Fruits that tempt, and flowers that shine,
+
   Happy insect! all are thine.
+
   Injuring nothing, blamed by none,
+
   Farmers love thee—pretty one!
+
   All rejoice thy voice to hear
+
   Singing blithe when summer's near.
+
   Thee the tuneful Muses love,
+
   Sweetly chirping in the grove;
+
   Thee the great Apollo bless'd
+
   With a voice above the rest.
+
   Thou from wasting age art free,
+
   Time has naught to do with thee. Skilful creature, child of song,
+
   Though to earth thou dost belong,
+
   Free from Nature's woes and pains,
+
   Free from flesh, or blood-fill'd veins,
+
   Happy thing! thou seem'st to me
+
   Almost a little god to be!
 
   And you have been listening to The Grasshopper, written by Anacreon, And TRANSLATED BY Thomas Bourne in the 17th century.
@@ -57,8 +90,11 @@ description: |-
   For now, from me, Jana,
 
   Goodbye.
-audio: ''
-duration: ''
-length: ''
----
 
+audio: ''
+
+duration: ''
+
+length: ''
+
+---

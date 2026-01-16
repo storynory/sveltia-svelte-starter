@@ -1,32 +1,47 @@
-/* -----------------------------------------------------------------
-   3. Root variables: stacks + scale system
-   ----------------------------------------------------------------- */
+@custom-media --mob (width <= 480px);
+@custom-media --tab (width >= 481px);
+@custom-media --desk (width >= 769px);
+@custom-media --desk-lg (width >= 1200px);
 :root {
 	/* Body font stack */
 	--font-body:
 		system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans', 'Helvetica Neue',
 		Arial, sans-serif;
 
-	/* Clean, modern sans for headings */
+	/* Headings font stack */
 	--font-heading:
 		'Comfortaa', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans',
 		'Helvetica Neue', Arial, sans-serif;
 
-	/* Core typography */
-	/* ~17px body equivalent (on top of html: 100%) */
-	--base-font-size: calc(100% * (16.5 / 16));
-	--font-scale: 1.275;
-	--line-height-ratio: 1.6; /* airy for long-form reading */
+	/* -------------------------------------------------
+	   Typography tokens (CMS overrides these ???)
+	   ------------------------------------------------- */
+	--fontSize: 17; /* number */
+	--scale: 1.3;
+	--lineHeight: 1.6;
 
-	/* Modular scale (all based off base font size) */
-	--scale-1: calc(var(--base-font-size) * var(--font-scale)); /* ~27px */
-	--scale-2: calc(var(--scale-1) * var(--font-scale)); /* ~43px */
-	--scale-3: calc(var(--scale-2) * var(--font-scale));
-	--scale-4: calc(var(--scale-3) * var(--font-scale));
+	/* Base as a LENGTH (rem), not a percentage */
+	--base: calc(1rem * (var(--fontSize) / 16));
 
-	/* In-between steps for fine control */
-	--scale-1-x: calc(var(--base-font-size) * 1.2); /* between body and h2 */
-	--scale-1-5: calc(var(--base-font-size) * 1.5); /* larger pull-quotes */
+	--scale-1: calc(var(--base) * var(--scale));
+	--scale-2: calc(var(--scale-1) * var(--scale));
+	--scale-3: calc(var(--scale-2) * var(--scale));
+	--scale-4: calc(var(--scale-3) * var(--scale));
+
+	/* Add the missing ones */
+	--scale-1-5: calc(var(--base) * 1.5);
+	--scale-1-x: calc(var(--base) * 1.25); /* pick whatever you meant */
+
+	--lh-h1: clamp(1.1, calc(var(--lineHeight, 1.6) - 0.3), 1.3);
+	--lh-h2: clamp(1.15, calc(var(--lineHeight, 1.6) - 0.2), 1.4);
+	--lh-h3: clamp(1.15, calc(var(--lineHeight, 1.6) - 0.3), 1.35);
+	--lh-h4: clamp(1.2, calc(var(--lineHeight, 1.6) - 0.1), 1.5);
+}
+/* Actually apply your base font size */
+body {
+	font-size: var(--base);
+	line-height: var(--lineHeight);
+	font-family: var(--font-body);
 }
 
 @font-face {
@@ -38,32 +53,22 @@
 }
 
 /* -----------------------------------------------------------------
-   4. Base sizing (mobile-first)
+   Base sizing (mobile-first)
    ----------------------------------------------------------------- */
-html {
-	font-size: 100%; /* keep browser default (16px) and scale from vars */
-}
-
-body {
-	font-size: var(--base-font-size); /* ~17–18px */
-	line-height: var(--line-height-ratio); /* ~1.6 */
-	font-family: var(--font-body);
-}
 
 p {
-	font-size: var(--base-font-size);
 	letter-spacing: 0.01em;
-	margin: 0 0 0.75em;
+	padding: 0 0 1em 0;
 }
 
 p.small {
 	font-size: 0.9em;
-	line-height: 1.5;
+	line-height: calc(var(--lineHeight) - 0.1);
 	margin: 0.25em;
 }
 
 .p-lg {
-	font-size: var(--scale-1-5); /* pull-quotes etc. */
+	font-size: var(--scale-1-5);
 	padding: 1.5em 0 0.75em 0;
 }
 
@@ -77,7 +82,6 @@ h4,
 	font-family: var(--font-heading);
 	letter-spacing: 0.01em;
 	font-weight: 600;
-	font-size-adjust: 0.6;
 }
 
 .brand-font {
@@ -86,36 +90,37 @@ h4,
 
 h1 {
 	font-size: var(--scale-3);
-	line-height: 1.3;
+	line-height: var(--lh-h1);
 	text-align: center;
 }
 
 /* Site title */
 .h1 {
 	font-size: clamp(30px, 5vw, 60px);
-	line-height: 1.6;
+	line-height: var(--lh-h2);
 	padding: 0.5em 0 1em 0;
 }
 
 h2 {
-	font-size: var(--scale-1); /* ~27px */
-	line-height: 1.4;
+	font-size: var(--scale-1);
+	line-height: var(--lh-h2);
 }
 
 h3 {
-	font-size: var(--scale-1-x); /* between body and h2 */
-	line-height: 1.3;
+	font-size: var(--scale-1-x);
+	line-height: var(--lh-h3);
 	padding-bottom: 0.25em;
 }
 
 h4 {
 	font-size: var(--base-font-size);
+	line-height: var(--lh-h4);
 	font-weight: 700;
 	margin-top: 1.25em;
 }
 
 /* -----------------------------------------------------------------
-   8. Utility
+   Utility
    ----------------------------------------------------------------- */
 .txt-center,
 .txt-center-mob {
@@ -135,7 +140,6 @@ h4 {
 }
 
 .caps {
-	/* all caps */
 	text-transform: uppercase;
 }
 
@@ -144,7 +148,6 @@ h4 {
 }
 
 .capitol {
-	/* first letter of each word */
 	text-transform: capitalize;
 }
 
@@ -157,19 +160,8 @@ h4 {
 }
 
 /* -----------------------------------------------------------------
-   9. Responsive overrides
-   (custom media --tab and --desk defined elsewhere)
+   Responsive overrides
    ----------------------------------------------------------------- */
-
-@media (--tab) {
-	html {
-		font-size: calc(100% * (18 / 16));
-	}
-
-	body {
-		line-height: 1.5;
-	}
-}
 
 @media (--desk) {
 	h1 {
@@ -179,6 +171,7 @@ h4 {
 	.txt-center-mob {
 		text-align: left;
 	}
+
 	.small {
 		font-size: 0.9em;
 		color: #444;

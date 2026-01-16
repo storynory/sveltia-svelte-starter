@@ -1,0 +1,18 @@
+@media (--desk) {
+	.grid {
+		display: flex;
+	}
+
+	ul.grid > li,
+	.grid > div,
+	.col {
+		flex: 1;
+		padding: 1em;
+	}
+
+	.flex-center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

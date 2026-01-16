@@ -48,3 +48,9 @@ export function fallbackSrc(src: string) {
 
 	return `${base}.${width}.${format}`;
 }
+
+export function pick<T extends Record<string, any>, K extends keyof T>(item: T, keys: K[]) {
+	const out: Partial<T> = {};
+	for (const k of keys) out[k] = item[k];
+	return out as Pick<T, K>;
+}

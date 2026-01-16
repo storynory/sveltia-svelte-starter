@@ -1,10 +1,17 @@
 ---
 title: The Green Willow
-date: 2026-01-13T09:54:00
-description: |-
-  Adapted by Bertie for Relaxivity And read by Jana
-
-  The Green Willow
+description: 'This traditional story about a Samurai knight and his love comes from Japan. It is about an age-old question: should you follow your duty or your heart? The atmosphere is romantic and ethereal, with a touch of ghostliness.'
+date: 2026-01-13T12:45:00+00:00
+thumb: /uploads/green-willow-coverart.webp
+mp3: ''
+duration: ''
+length: ''
+talent:
+  - Jana
+tags:
+  - Stories
+---
+The Green Willow
 
   Hello, this is Jana, and welcome to Relaxivity, a place where you can spend a little time for yourself. We bring you stories of a quiet, spiritual nature, as well as poems and meditations. Listen when you want to relax or fall asleep.
 
@@ -63,6 +70,7 @@ description: |-
   Tomodata saddled and bridled his horse, and rode slowly away through the mist of the early morning. The storm was quite over, and it was as still as Paradise. The green grass and the leaves shone with the wet. The sky was clear, and the path bright with autumn flowers, but Tomodata was sad.
 
   “Ah, Green Willow, Green Willow,” he sighed. At noon his sigh was the same, and that evening it had not changed. That night he lay in a deserted shrine, a still, holy place, and he slept profoundly. At dawn, he rose, meaning to wash in a stream that flowed nearby. When he reached the gateway to the shrine, his way was blocked. A slender girl lay face down across his path, her long, black hair flung about her.
+
   Tomodata knelt beside her. She slowly lifted herself and held him by the sleeve. They gazed into each other’s eyes.
 
   He took her in his arms without a word, and soon he set her on his horse before him. They rode the whole day. The heat and the cold were nothing to them. They felt not the sun nor the rain. Tomodata did not think of his Samurai honour in the service of Lord Noto. Green Willow had forgotten her duty to her parents. They knew but one thing. Love.
@@ -90,8 +98,3 @@ description: |-
   One time, at nightfall, he found himself upon a lonely moor. On his right hand, he saw a little hill, and on it, the sad ruins of a poor thatched cottage. The door swung to and fro with a broken latch and creaking hinge. Three old stumps of willow trees stood beside the house. Tomodata waited for a long while, still and silent. Then he sang gently to himself: “Long-haired maiden, do you know That with the red dawn I must go?
 
   Do you wish me far away? Cruel long-haired maiden, say— Long-haired maiden, if you know That with the red dawn I must go, Why, oh why, do you blush so?”
-audio: ''
-duration: ''
-length: ''
----
-

@@ -1,6 +1,7 @@
 /* Base elements */
 article {
 	padding: 0 0.25em;
+	max-width: 800px;
 }
 
 .page,
@@ -10,12 +11,14 @@ main {
 	overflow-x: hidden; /* or clip, but keep comment in sync */
 }
 
-/* Centred page container */
 .page {
 	max-width: 1600px;
 }
 
 main {
+	position: relative;
+	top: 200px;
+	z-index: 1;
 	padding: 0.5em 0.25em;
 	border-radius: 6px;
 }
@@ -44,6 +47,15 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.full-height {
+	height: 100dvh; /* Adapts as browser UI appears/disappears */
+}
+.full {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
 }
 
 /* Desktop enhancements */

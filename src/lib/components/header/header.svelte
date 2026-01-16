@@ -1,110 +1,110 @@
-<nav class="txt-right page -p bg-white">
-	<a href="/">Home</a> /
-	<a href="/pages/about/">About / </a>
-	<a href="/search/">Search / </a>
-	<a href="/books/">Books</a>
-</nav>
+<div class="top fixed">
+	<div class="full topNav">
+		<nav class="txt-right page -p">
+			<a href="/">Home</a> /
+			<a href="/pages/about/">About / </a>
+			<a href="/search/">Search / </a>
+			<a href="/podcast/">Podcast</a>
+		</nav>
+	</div>
 
-<header class="h1 bg-prime txt-center txt-light">
-	<a class="txt-white brand" href="/">Philosophy</a>
-	<span class="oval-thought circle it">24/7</span>
-</header>
+	<header class="bg-prime header">
+		<div class="wave"></div>
+
+		<div class="site-title txt-center">
+			<a class="title txt-accent" href="/">Relaxivity</a>
+			<p class="txt-accent">Relax and listen to stories</p>
+		</div>
+	</header>
+</div>
 
 <style>
-	a.brand:hover {
-		color: white;
-	}
-
-	.oval-thought {
-		font-size: 0.75em;
+	.topNav {
+		width: 100%;
+		background-color: ivory;
+		overflow: hidden;
 		position: relative;
-		padding-right: 1em;
-		color: var(--frog-dark);
-		background-color: ivory;
-		border-radius: 180px;
-		padding: 0.25em 1em;
-		font-style: italic;
+	}
+	.fixed {
+		position: fixed;
+		width: 100%;
+		z-index: 100;
 	}
 
-	.oval-thought:after,
-	.oval-thought:before {
-		display: block;
-		content: '';
+	.header {
+		position: relative;
+		height: 160px;
+		border-bottom: 2px solid var(--accent);
+		overflow: hidden;
+	}
+
+	.wave {
 		position: absolute;
-		background-color: ivory;
-		border-radius: 30px;
-		bottom: -23px;
-		left: 1.6em;
-		width: 30px;
-		height: 30px;
+		inset: 0;
+		z-index: 1;
+
+		contain: paint;
+		pointer-events: none;
+
+		/* helps some browsers keep this on its own composited layer */
+		transform: translateZ(0);
+
+		--size: 50px;
+		--b: 10px;
+		--m: 0.5;
+		--p: calc(var(--m) * var(--size));
+		--R: calc(var(--size) * sqrt(var(--m) * var(--m) + 1) + var(--b) / 2);
+
+		--_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
+
+		/* Safari/iOS */
+		-webkit-mask:
+			radial-gradient(var(--R) at left 50% bottom calc(-1 * var(--p)), var(--_g))
+				calc(50% - 2 * var(--size)) calc(50% - var(--size) / 2 - var(--b) / 2) /
+				calc(4 * var(--size)) calc(var(--size) + var(--b)),
+			radial-gradient(var(--R) at left 50% top calc(-1 * var(--p)), var(--_g)) 50%
+				calc(50% + var(--size) / 2 + var(--b) / 2) / calc(4 * var(--size))
+				calc(var(--size) + var(--b));
+
+		/* everyone else */
+		mask:
+			radial-gradient(var(--R) at left 50% bottom calc(-1 * var(--p)), var(--_g))
+				calc(50% - 2 * var(--size)) calc(50% - var(--size) / 2 - var(--b) / 2) /
+				calc(4 * var(--size)) calc(var(--size) + var(--b)),
+			radial-gradient(var(--R) at left 50% top calc(-1 * var(--p)), var(--_g)) 50%
+				calc(50% + var(--size) / 2 + var(--b) / 2) / calc(4 * var(--size))
+				calc(var(--size) + var(--b));
+
+		background: linear-gradient(90deg, rgba(230, 211, 163, 0.6), rgba(176, 224, 230, 0.6));
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 	}
 
-	.oval-thought:after {
-		bottom: -25px;
-		left: 1em;
-		width: 15px;
-		height: 15px;
-		border-radius: 15px;
+	.site-title {
+		position: relative;
+		z-index: 2;
+
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		pointer-events: auto;
+		text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+		background-color: rgba(13, 27, 63, 0.7);
+		padding: 1em;
 	}
 
-	.circle {
-		border-radius: 360px;
-	}
-	/*
-.strap {
-    position: relative;
-    font-size: 85%;
-    font-style: italic;
-    margin-bottom: 1em;
-}
-*/
-
-	@media (max-width: 600px) {
-		.oval-thought {
-			display: block;
-			max-width: 200px;
-			margin: auto;
-		}
-
-		.oval-thought:after,
-		.oval-thought:before {
-			bottom: -20px;
-			left: 1.6em;
-			width: 25px;
-			height: 25px;
-		}
-
-		.oval-thought:after {
-			bottom: -25px;
-			left: 1em;
-			width: 10px;
-			height: 10px;
-			border-radius: 15px;
-		}
+	header .title {
+		font-size: 2.2rem;
+		line-height: 1.2;
+		margin: 0;
+		text-decoration: none;
 	}
 
-	@media (max-width: 480px) {
-		.oval-thought {
-			display: block;
-			max-width: 200px;
-			margin: auto;
-			max-width: 120px;
-		}
-
-		.oval-thought:after,
-		.oval-thought:before {
-			bottom: -20px;
-			left: 1.6em;
-			width: 20px;
-			height: 20px;
-		}
-
-		.oval-thought:after {
-			bottom: -25px;
-			left: 1em;
-			width: 10px;
-			height: 10px;
-			border-radius: 15px;
-		}
+	.site-title p {
+		margin: 0.4em 0 0;
+		font-size: 1rem;
+		opacity: 1;
 	}
 </style>

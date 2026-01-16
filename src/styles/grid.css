@@ -1,14 +1,8 @@
-.grid {
-	display: flex;
+@media (--desk) {
+	.grid {
+		display: grid;
+		/* (100% / 3) ensures no more than 3 items can fit in a row */
+		grid-template-columns: repeat(auto-fit, minmax(clamp(33% - 1rem, 250px, 100%), 1fr));
+		gap: 1rem;
+	}
 }
-
-.col {
-	flex: 1;
-}
-
-.flex-center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
