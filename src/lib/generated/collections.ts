@@ -36,13 +36,6 @@ export const collections = {
     "format": "markdown",
     "extension": "md"
   },
-  "tags": {
-    "name": "tags",
-    "kind": "folder",
-    "folder": "content/tags",
-    "format": "markdown",
-    "extension": "md"
-  },
   "people": {
     "name": "people",
     "kind": "folder",
@@ -54,6 +47,13 @@ export const collections = {
     "name": "podcasts",
     "kind": "folder",
     "folder": "content/podcasts",
+    "format": "markdown",
+    "extension": "md"
+  },
+  "tags": {
+    "name": "tags",
+    "kind": "folder",
+    "folder": "content/tags",
     "format": "markdown",
     "extension": "md"
   },

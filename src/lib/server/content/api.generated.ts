@@ -7,9 +7,9 @@ import { readAll, readOne, readDoc } from '$lib/server/content/read';
 import type { ReadResult } from '$lib/server/content/read';
 import type {
 	Post,
-	Tag,
 	Person,
 	Podcast,
+	Tag,
 	Font,
 	Typography,
 	ColorScheme,
@@ -79,29 +79,6 @@ export function joinPostsWithTags(posts: Post[], tags: Tag[]): Post[] {
 	});
 }
 
-function mapTag(row: ReadResult): Tag {
-	const data = (row.data ?? {}) as Record<string, unknown>;
-	const body = typeof row.body === 'string' ? row.body : '';
-	return {
-		slug: row.meta?.slug ?? '',
-		title: asString(data['title']),
-		description: asString(data['description']),
-		categoryImage: asString(data['categoryImage']),
-		body,
-		excerpt: body ? body.slice(0, 200) : ''
-	};
-}
-
-export async function getTags(): Promise<Tag[]> {
-	const rows = await readAll('tags');
-	return rows.map(mapTag);
-}
-
-export async function getTag(slug: string): Promise<Tag | null> {
-	const row = await readOne('tags', slug);
-	return row ? mapTag(row) : null;
-}
-
 function mapPerson(row: ReadResult): Person {
 	const data = (row.data ?? {}) as Record<string, unknown>;
 	const body = typeof row.body === 'string' ? row.body : '';
@@ -110,7 +87,7 @@ function mapPerson(row: ReadResult): Person {
 		name: asString(data['name']),
 		role: asString(data['role']),
 		bio: asString(data['bio']),
-		photo: asString(data['photo']),
+		headshot: asString(data['headshot']),
 		body,
 		excerpt: body ? body.slice(0, 200) : ''
 	};
@@ -188,6 +165,29 @@ export function joinPodcastsWithTags(podcasts: Podcast[], tags: Tag[]): Podcast[
 			: [];
 		return { ...(p as any), tagsObjects: resolved } as Podcast;
 	});
+}
+
+function mapTag(row: ReadResult): Tag {
+	const data = (row.data ?? {}) as Record<string, unknown>;
+	const body = typeof row.body === 'string' ? row.body : '';
+	return {
+		slug: row.meta?.slug ?? '',
+		title: asString(data['title']),
+		description: asString(data['description']),
+		categoryImage: asString(data['categoryImage']),
+		body,
+		excerpt: body ? body.slice(0, 200) : ''
+	};
+}
+
+export async function getTags(): Promise<Tag[]> {
+	const rows = await readAll('tags');
+	return rows.map(mapTag);
+}
+
+export async function getTag(slug: string): Promise<Tag | null> {
+	const row = await readOne('tags', slug);
+	return row ? mapTag(row) : null;
 }
 
 function mapFont(row: ReadResult): Font {

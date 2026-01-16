@@ -18,21 +18,12 @@ export type Post = {
 	excerpt: string;
 };
 
-export type Tag = {
-	slug: Slug;
-	title: string;
-	description?: string;
-	categoryImage?: string;
-	body: string;
-	excerpt: string;
-};
-
 export type Person = {
 	slug: Slug;
 	name: string;
 	role?: string;
 	bio?: string;
-	photo?: string;
+	headshot?: string;
 	body: string;
 	excerpt: string;
 };
@@ -49,6 +40,15 @@ export type Podcast = {
 	length?: string;
 	talent?: string[];
 	tags?: string[];
+	body: string;
+	excerpt: string;
+};
+
+export type Tag = {
+	slug: Slug;
+	title: string;
+	description?: string;
+	categoryImage?: string;
 	body: string;
 	excerpt: string;
 };

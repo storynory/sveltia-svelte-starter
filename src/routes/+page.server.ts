@@ -12,7 +12,7 @@ export async function load() {
 	});
 
 	podcasts = join(podcasts, talent, {
-		field: 'name',
+		field: 'slug',
 		multiple: true
 	});
 

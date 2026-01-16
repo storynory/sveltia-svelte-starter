@@ -22,8 +22,11 @@ export async function GET() {
 
 	podcasts = filterPublished(podcasts);
 
-	podcasts = join(podcasts, tags, { field: 'tags', targetKey: 'title', multiple: true });
-	podcasts = join(podcasts, people, { field: 'talent', targetKey: 'name', multiple: true });
+	// podcasts.tags = ['prayers', ...]  -> join against tags.slug
+	podcasts = join(podcasts, tags, { field: 'tags', targetKey: 'slug', multiple: true });
+
+	// podcasts.talent = ['jana', ...]  -> join against people.slug
+	podcasts = join(podcasts, people, { field: 'talent', targetKey: 'slug', multiple: true });
 
 	const docs = podcasts.map((p: any) => {
 		const tagTitles = (p.tagsObjects ?? []).map((t: any) => t.title).filter(Boolean);
