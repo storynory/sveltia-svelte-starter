@@ -1,13 +1,22 @@
-<div class="top">
-	<div class="full topNav">
-		<nav class="txt-right page -p">
-			<a href="/">Home</a> /
-			<a href="/posts/about-relaxivity">About / </a>
-			<a href="/search/">Search / </a>
-			<a href="/posts/podcast">Podcast</a>
-		</nav>
-	</div>
-
+<div>
+	<nav class="top -p-r">
+		<a href="/">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-home"></use></svg>
+			Home
+		</a>
+		<a href="/posts/about-relaxivity">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-info"></use></svg>
+			About
+		</a>
+		<a href="/search/">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-search"></use></svg>
+			Search
+		</a>
+		<a href="/posts/podcast">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-podcast"></use></svg>
+			Podcast
+		</a>
+	</nav>
 	<header class="bg-prime header">
 		<div class="wave"></div>
 
@@ -38,48 +47,6 @@
 		overflow: hidden;
 	}
 
-	.wave {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-
-		contain: paint;
-		pointer-events: none;
-
-		/* helps some browsers keep this on its own composited layer */
-		transform: translateZ(0);
-
-		--size: 50px;
-		--b: 10px;
-		--m: 0.5;
-		--p: calc(var(--m) * var(--size));
-		--R: calc(var(--size) * sqrt(var(--m) * var(--m) + 1) + var(--b) / 2);
-
-		--_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
-
-		/* Safari/iOS */
-		-webkit-mask:
-			radial-gradient(var(--R) at left 50% bottom calc(-1 * var(--p)), var(--_g))
-				calc(50% - 2 * var(--size)) calc(50% - var(--size) / 2 - var(--b) / 2) /
-				calc(4 * var(--size)) calc(var(--size) + var(--b)),
-			radial-gradient(var(--R) at left 50% top calc(-1 * var(--p)), var(--_g)) 50%
-				calc(50% + var(--size) / 2 + var(--b) / 2) / calc(4 * var(--size))
-				calc(var(--size) + var(--b));
-
-		/* everyone else */
-		mask:
-			radial-gradient(var(--R) at left 50% bottom calc(-1 * var(--p)), var(--_g))
-				calc(50% - 2 * var(--size)) calc(50% - var(--size) / 2 - var(--b) / 2) /
-				calc(4 * var(--size)) calc(var(--size) + var(--b)),
-			radial-gradient(var(--R) at left 50% top calc(-1 * var(--p)), var(--_g)) 50%
-				calc(50% + var(--size) / 2 + var(--b) / 2) / calc(4 * var(--size))
-				calc(var(--size) + var(--b));
-
-		background: linear-gradient(90deg, rgba(230, 211, 163, 0.6), rgba(176, 224, 230, 0.6));
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
-	}
-
 	.site-title {
 		position: relative;
 		z-index: 2;
@@ -106,5 +73,23 @@
 		margin: 0.4em 0 0;
 		font-size: 1rem;
 		opacity: 1;
+	}
+
+	.icon {
+		width: 1.2em;
+		height: 1.2em;
+		display: inline-block;
+		vertical-align: -0.15em;
+		fill: currentColor;
+	}
+	.top {
+		font-size: 1rem;
+		text-align: right;
+		padding-right: 0.5em;
+	}
+
+	.top a {
+		padding: 0.5em 0.5em 0.5em 0;
+		display: inline-block;
 	}
 </style>

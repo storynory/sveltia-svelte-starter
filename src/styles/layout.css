@@ -57,6 +57,10 @@ footer {
 	overflow: hidden;
 }
 
+.relative {
+	position: relative;
+}
+
 /* Desktop enhancements */
 @media (--desk) {
 	.grid {

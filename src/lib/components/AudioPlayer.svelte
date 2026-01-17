@@ -5,19 +5,21 @@
 
 	//	let { mp3 }: { mp3: string | undefined } = $props();
 	// mp3 = stem + mp3;
+	const stem = 'https://audio.relaxivity.app/';
 	let props = $props<{ mp3?: string }>();
 
 	// use props.mp3 everywhere
 
-	// ✅ Force HTTPS if needed
+	// // ✅ Force HTTPS if needed
 	if (props.mp3 && props.mp3.startsWith('http://')) {
 		props.mp3 = props.mp3.replace(/^http:\/\//i, 'https://');
 	}
-
+	//
 	let fileName: string = $state('');
 	if (props.mp3) {
 		// Works with full URLs like https://traffic.libsyn.com/blogrelations/filename.mp3
 		fileName = props.mp3.split('/').pop() ?? '';
+		fileName = stem + fileName;
 	}
 
 	// Type the audio element reference
@@ -90,8 +92,8 @@
 
 		isActive = true;
 
-		if (!hasSrc && props.mp3) {
-			audio.src = props.mp3;
+		if (!hasSrc && fileName) {
+			audio.src = fileName;
 			audio.preload = 'none';
 			hasSrc = true;
 			status = 'Loading…';
@@ -157,7 +159,7 @@
 	});
 </script>
 
-<figure id="figure" class="player bg-frog-dark container -m-b -p">
+<figure id="figure" class="player bg-prime container -m-b -p">
 	<div class="speaker {playclass}"><Speaker></Speaker></div>
 	<button type="button" class="replay" onclick={jumpBack} aria-label="Jump back 15 seconds">
 		<IconReplay></IconReplay>
@@ -165,7 +167,7 @@
 
 	<audio
 		bind:this={audio}
-		src={props.mp3}
+		src={fileName}
 		preload="metadata"
 		onloadedmetadata={onLoadedMetadata}
 		ontimeupdate={setTime}
@@ -202,7 +204,7 @@
 </figure>
 {#if props.mp3}
 	<div class="links playerlinks">
-		<a href={props.mp3}>Download</a>
+		<a href={fileName}>Download</a>
 		<!--	<span class="right podcast"><a href="/pages/podcast/">Subscribe to Podcast</a></span> -->
 	</div>
 {/if}
@@ -259,6 +261,7 @@
 		width: 0;
 		height: 48px;
 		overflow: hidden;
+		/* the border makes the play triangle shape */
 		border-color: transparent transparent transparent #efd480;
 		transition: 0.1s all ease;
 		cursor: pointer;

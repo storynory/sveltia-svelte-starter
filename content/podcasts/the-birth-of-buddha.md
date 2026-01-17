@@ -3,7 +3,7 @@ title: The Birth of Buddha
 description: An atmospheric telling of the birth of one of the world's great religious figures.
 date: 2026-01-14T13:13:00+00:00
 thumb: /uploads/buddha-videoart.jpg
-mp3: ''
+mp3: birth-of-buddha-relaxivity.mp3
 duration: ''
 length: ''
 talent:
