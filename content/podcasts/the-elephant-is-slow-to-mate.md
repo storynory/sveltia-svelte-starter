@@ -1,6 +1,6 @@
 ---
 title: The Elephant is Slow to Mate
-draft: true
+draft: false
 description: A slow love poem by DH Lawrence
 date: 2026-01-14T13:16:00+00:00
 thumb: /uploads/elephant-love-videoart.jpg
