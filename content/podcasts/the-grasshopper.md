@@ -29,7 +29,7 @@ THE GRASSHOPPER By Anacreon
 
   So now you know some background, let's get ready to listen to this enchanting poem, composed some 2,500 years ago.
 
-  The Grasshopper, by Anacreon Happy insect! all agree
+  The Grasshopper, by Anacreon Happy insect! All agree
 
   None can be more bless'd than thee;
 

@@ -133,6 +133,7 @@ function mapPodcast(row: ReadResult): Podcast {
 		slug: row.meta?.slug ?? '',
 		title: asString(data['title']),
 		draft: asBoolean(data['draft']),
+		preview_url: pick(data['preview_url']),
 		description: asString(data['description']),
 		date: asString(data['date']),
 		thumb: asString(data['thumb']),

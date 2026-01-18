@@ -131,6 +131,8 @@
 		}
 	}
 
+	/**************** BURGER AND TRANSFORM INTO X ***************/
+
 	.burger {
 		position: fixed;
 		top: 2px;
@@ -188,10 +190,12 @@
 	.burger.open .burger-lines::before {
 		top: 0;
 		transform: rotate(45deg);
+		background: blue;
 	}
 
 	.burger.open .burger-lines::after {
 		top: 0;
 		transform: rotate(-45deg);
+		background: blue;
 	}
 </style>

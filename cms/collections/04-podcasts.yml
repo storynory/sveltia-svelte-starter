@@ -20,6 +20,11 @@ fields:
     widget: boolean
     required: false
 
+  - name: preview_url
+    label: Preview URL
+    widget: compute
+    value: "/podcasts/{{fields.title | slug}}?preview=1"
+
   - name: description
     label: Description
     widget: markdown
