@@ -41,7 +41,6 @@ export type Podcast = {
 	slug: Slug;
 	title: string;
 	draft?: boolean;
-	preview_url: unknown;
 	description?: string;
 	date?: string;
 	thumb?: string;
