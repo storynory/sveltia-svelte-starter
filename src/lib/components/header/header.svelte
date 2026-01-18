@@ -1,4 +1,10 @@
-<div>
+<script lang="ts">
+	import Menu from '$lib/components/menu/sideMenu.svelte';
+</script>
+
+<div class="topNav">
+	<Menu />
+	<span class="burger fixed"></span>
 	<nav class="top -p-r">
 		<a href="/">
 			<svg class="icon"><use href="/icons/sprite.svg#icon-home"></use></svg>
