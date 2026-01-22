@@ -1,8 +1,12 @@
 @media (--desk) {
 	.grid {
+		/* dead simple, very responsive layout */
 		display: grid;
-		/* (100% / 3) ensures no more than 3 items can fit in a row */
-		grid-template-columns: repeat(auto-fit, minmax(clamp(33% - 1rem, 250px, 100%), 1fr));
 		gap: 1rem;
+	}
+
+	.grid.three {
+		/*three column layout */
+		grid-template-columns: repeat(auto-fit, minmax(clamp(33% - 1rem, 250px, 100%), 1fr));
 	}
 }
