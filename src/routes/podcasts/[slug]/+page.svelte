@@ -5,13 +5,27 @@
 	let { data } = $props();
 </script>
 
-<Header />
+<svelte:head>
+	<title>{data.post.title}</title>
+	<meta name="description" content={data.post.title} />
+</svelte:head>
 
-<main class="bg-prime center">
+<div class="page full">
 	<article class="bg-light">
 		<h1>{data.post.title}</h1>
 		<Player mp3={data.post.mp3} />
-		<Picture src={data.post.thumb} />
+		{#if data.post.thumb}
+			<Picture src={data.post.thumb} />
+		{/if}
 		<p>{@html data.post.body}</p>
 	</article>
-</main>
+</div>
+
+<style>
+	.page {
+		padding-top: 2em;
+	}
+	article {
+		margin: auto;
+	}
+</style>

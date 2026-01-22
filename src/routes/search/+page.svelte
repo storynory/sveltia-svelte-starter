@@ -57,7 +57,6 @@
 	});
 </script>
 
-<Header />
 <main class="bg-prime">
 	<div class="page">
 		<article class="bg-light">

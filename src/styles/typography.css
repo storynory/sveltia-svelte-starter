@@ -5,12 +5,12 @@
 :root {
 	/* Body font stack */
 	--font-body:
-		system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans', 'Helvetica Neue',
-		Arial, sans-serif;
+		'Roboto', 'Noto Sans', 'Liberation Sans', 'Helvetica Neue', Arial, 'Segoe UI', system-ui,
+		'apple-system', sans-serif;
 
 	/* Headings font stack */
 	--font-heading:
-		'Comfortaa', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans',
+		'Handlee-Regular', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Liberation Sans',
 		'Helvetica Neue', Arial, sans-serif;
 
 	/* -------------------------------------------------
@@ -45,8 +45,8 @@ body {
 }
 
 @font-face {
-	font-family: 'Comfortaa';
-	src: url('/fonts/comfortaa/Comfortaa-SemiBold-latin.woff2') format('woff2');
+	font-family: 'Handlee';
+	src: url('/fonts/handlee/Handlee-Regular.woff2') format('woff2');
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
@@ -74,12 +74,17 @@ p.small {
 
 /* Headings
    ----------------------------------------------------------------- */
+.brand-font {
+	font-family: var(--font-heading);
+	font-size: 1.2em;
+}
+
 h1,
 h2,
 h3,
 h4,
 .h1 {
-	font-family: var(--font-heading);
+	font-family: var(--font-body);
 	letter-spacing: 0.01em;
 	font-weight: 600;
 }

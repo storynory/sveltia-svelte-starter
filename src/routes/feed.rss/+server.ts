@@ -21,6 +21,13 @@ const FEED = {
 
 	language: 'en',
 	author: 'Relaxivity',
+
+	// Recommended for Apple Podcasts (email should NOT go in itunes:author)
+	owner: {
+		name: 'Relaxivity',
+		email: 'bertie@storynory.com' // <- change this
+	},
+
 	explicit: false,
 
 	itunesCategory: {
@@ -28,21 +35,48 @@ const FEED = {
 		sub: 'Mental Health'
 	},
 
+	// 1400x1400+ square recommended; should be a full URL or site-relative path
 	channelImage: '/itunes247.jpg',
+
+	// Optional: if you want every episode to use channelImage unless it has its own thumb
+	fallbackItemImageToChannelImage: true,
 
 	cacheControl: 'max-age=0, s-maxage=3600'
 } as const;
 
 // ------------------------------------------------------------
+// Types
+// ------------------------------------------------------------
+type Podcast = {
+	slug: string;
+	title: string;
+	draft?: boolean;
+	description?: string;
+	date?: string;
+	thumb?: string;
+	mp3?: string;
+	duration?: string; // "MM:SS" or "HH:MM:SS"
+	length?: string | number; // bytes, allow commas in string
+	bodyHtml?: string; // optional, if your API provides it
+	body?: string; // optional
+	excerpt?: string; // optional
+};
+
+// ------------------------------------------------------------
 // Helpers
 // ------------------------------------------------------------
 function escapeXml(input: string): string {
-	return input
+	return String(input)
 		.replace(/&/g, '&amp;')
 		.replace(/</g, '&lt;')
 		.replace(/>/g, '&gt;')
 		.replace(/"/g, '&quot;')
 		.replace(/'/g, '&apos;');
+}
+
+// CDATA that won’t break if content includes "]]>"
+function cdata(input: string): string {
+	return `<![CDATA[${String(input).replace(/]]>/g, ']]]]><![CDATA[>')}]]>`;
 }
 
 function dateValue(p: { date?: string }): number {
@@ -51,10 +85,8 @@ function dateValue(p: { date?: string }): number {
 }
 
 function pubDate(p: { date?: string }): string {
-	// If date missing, avoid "Invalid Date"
-	return p?.date && Number.isFinite(new Date(p.date).getTime())
-		? new Date(p.date).toUTCString()
-		: new Date(0).toUTCString();
+	const d = p?.date ? new Date(p.date) : null;
+	return d && Number.isFinite(d.getTime()) ? d.toUTCString() : new Date(0).toUTCString();
 }
 
 function resolveChannelImageUrl(): string {
@@ -80,18 +112,33 @@ function resolveAudioUrl(mp3: unknown): string {
 	return `${FEED.audioBaseUrl}/${s}`;
 }
 
-type Podcast = {
-	slug: string;
-	title: string;
-	date?: string;
-	description?: string;
-	bodyHtml?: string;
-	thumb?: string;
-	mp3?: string;
-	duration?: string;
-	length?: string | number;
-	with?: string[];
-};
+function resolveThumbUrl(itemThumb?: string): string {
+	const t = typeof itemThumb === 'string' ? itemThumb.trim() : '';
+	if (t) {
+		return t.startsWith('http') ? t : `${FEED.siteUrl}${t}`;
+	}
+	return FEED.fallbackItemImageToChannelImage ? resolveChannelImageUrl() : '';
+}
+
+function parseLengthBytes(length: unknown): number {
+	if (typeof length === 'number') {
+		return Number.isFinite(length) && length > 0 ? Math.floor(length) : 0;
+	}
+	if (typeof length === 'string') {
+		// allow commas/spaces from “Get Info” copy/paste: "20,971,520"
+		const cleaned = length.replace(/[, ]+/g, '').trim();
+		const n = Number.parseInt(cleaned, 10);
+		return Number.isFinite(n) && n > 0 ? n : 0;
+	}
+	return 0;
+}
+
+function isValidDuration(d: unknown): d is string {
+	if (typeof d !== 'string') return false;
+	const s = d.trim();
+	// MM:SS or HH:MM:SS (also allows M:SS)
+	return /^([0-9]{1,2}:)?[0-5]?[0-9]:[0-5][0-9]$/.test(s);
+}
 
 // ------------------------------------------------------------
 // Handler
@@ -101,39 +148,44 @@ export const GET: RequestHandler = async () => {
 
 	const itemsXml = podcasts
 		.slice()
+		// drop drafts if they exist
+		.filter((p) => !p.draft)
 		.sort((a, b) => dateValue(b) - dateValue(a))
 		.map((p) => {
 			const link = `${FEED.siteUrl}/podcasts/${p.slug}`;
 			const audioUrl = resolveAudioUrl(p.mp3);
 
-			const description = p.description || p.bodyHtml || '';
+			// Prefer explicit description; fall back to HTML/body if you have it; else empty.
+			const description = p.description ?? p.bodyHtml ?? p.excerpt ?? '';
 
-			const thumbUrl = p.thumb
-				? p.thumb.startsWith('http')
-					? p.thumb
-					: `${FEED.siteUrl}${p.thumb}`
+			const thumbUrl = resolveThumbUrl(p.thumb);
+			const lengthValue = parseLengthBytes(p.length);
+
+			// Only output duration if it matches a safe pattern
+			const duration = isValidDuration(p.duration) ? p.duration.trim() : '';
+
+			// Enclosure: include if we have an audio URL. Length is optional; include only if valid > 0.
+			const enclosureXml = audioUrl
+				? lengthValue > 0
+					? `<enclosure url="${escapeXml(audioUrl)}" length="${lengthValue}" type="audio/mpeg" />`
+					: `<enclosure url="${escapeXml(audioUrl)}" type="audio/mpeg" />`
 				: '';
-
-			const lengthValue =
-				typeof p.length === 'number'
-					? p.length
-					: typeof p.length === 'string'
-						? Number.parseInt(p.length, 10) || 0
-						: 0;
 
 			return `
       <item>
-        <title><![CDATA[${p.title ?? ''}]]></title>
+        <title>${cdata(p.title ?? '')}</title>
         <link>${escapeXml(link)}</link>
         <guid isPermaLink="true">${escapeXml(link)}</guid>
         <pubDate>${pubDate(p)}</pubDate>
 
-        <description><![CDATA[${description}]]></description>
+        <description>${cdata(description)}</description>
 
-        ${audioUrl ? `<enclosure url="${escapeXml(audioUrl)}" length="${lengthValue}" type="audio/mpeg" />` : ''}
-        ${p.duration ? `<itunes:duration>${escapeXml(p.duration)}</itunes:duration>` : ''}
+        ${enclosureXml}
+        ${duration ? `<itunes:duration>${escapeXml(duration)}</itunes:duration>` : ''}
         ${thumbUrl ? `<itunes:image href="${escapeXml(thumbUrl)}" />` : ''}
-        ${p.with && p.with.length > 0 ? `<itunes:author>${escapeXml(p.with.join(', '))}</itunes:author>` : ''}
+
+        <!-- Keep author consistent and set once in config -->
+        <itunes:author>${escapeXml(FEED.author)}</itunes:author>
       </item>`;
 		})
 		.join('');
@@ -153,6 +205,11 @@ export const GET: RequestHandler = async () => {
 
     <itunes:author>${escapeXml(FEED.author)}</itunes:author>
     <itunes:explicit>${FEED.explicit ? 'true' : 'false'}</itunes:explicit>
+
+    <itunes:owner>
+      <itunes:name>${escapeXml(FEED.owner.name)}</itunes:name>
+      <itunes:email>${escapeXml(FEED.owner.email)}</itunes:email>
+    </itunes:owner>
 
     <itunes:category text="${escapeXml(FEED.itunesCategory.main)}">
       <itunes:category text="${escapeXml(FEED.itunesCategory.sub)}" />

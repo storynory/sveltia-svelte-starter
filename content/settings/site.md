@@ -3,7 +3,7 @@ siteTitle: Relaxivity
 siteDescription: Relax and listen to stories
 defaultImage: ''
 activeColorScheme: deep-blue
-activeHeadingsFont: default
+activeHeadingsFont: handlee-regular
 activeBodyFont: default
 activeTypography: punchy
 accentColour: ''

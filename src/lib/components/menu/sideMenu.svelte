@@ -43,11 +43,23 @@
 {/if}
 
 <aside id="side-menu" class:open aria-label="Site menu">
-	<nav class="menu-nav" aria-label="Main">
-		<a href="/" onclick={close}>Home</a>
-		<a href="/posts/about-relaxivity" onclick={close}>About</a>
-		<a href="/search/" onclick={close}>Search</a>
-		<a href="/posts/podcast" onclick={close}>Podcast</a>
+	<nav class="menu-nav" aria-label="Main txt-prime">
+		<a href="/">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-home"></use></svg>
+			Home
+		</a>
+		<a href="/posts/about-relaxivity">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-info"></use></svg>
+			About
+		</a>
+		<a href="/search/">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-search"></use></svg>
+			Search
+		</a>
+		<a href="/posts/podcast">
+			<svg class="icon"><use href="/icons/sprite.svg#icon-podcast"></use></svg>
+			Podcast
+		</a>
 	</nav>
 </aside>
 
@@ -57,6 +69,14 @@
 		inset: 0;
 		z-index: 40;
 		background: rgba(0, 0, 0, 0.35);
+	}
+
+	.icon {
+		width: 1.2em;
+		height: 1.2em;
+		display: inline-block;
+		vertical-align: -0.15em;
+		fill: currentColor;
 	}
 
 	aside {
@@ -104,7 +124,7 @@
 		border-radius: 10px;
 	}
 
-	.close:hover {
+	button:hover {
 		background: rgba(0, 0, 0, 0.06);
 	}
 
@@ -118,7 +138,6 @@
 		text-decoration: none;
 		padding: 10px 12px;
 		border-radius: 12px;
-		color: inherit;
 	}
 
 	.menu-nav a:hover {
@@ -134,9 +153,7 @@
 	/**************** BURGER AND TRANSFORM INTO X ***************/
 
 	.burger {
-		position: fixed;
-		top: 2px;
-		left: 16px;
+		top: -4px;
 		z-index: 50;
 		width: 32px;
 		height: 32px;
@@ -147,7 +164,7 @@
 		backdrop-filter: blur(10px); */
 		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 		cursor: pointer;
-
+		position: relative;
 		display: grid;
 		place-items: center;
 	}
@@ -159,7 +176,7 @@
 		display: block;
 		width: 20px;
 		height: 2px;
-		background: currentColor;
+		background: blue;
 		border-radius: 2px;
 		position: relative;
 		transition:

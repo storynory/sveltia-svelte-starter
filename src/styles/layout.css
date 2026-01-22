@@ -6,7 +6,6 @@ article {
 
 .page,
 main {
-	display: block;
 	margin: 0 auto;
 	overflow-x: hidden; /* or clip, but keep comment in sync */
 }
@@ -18,8 +17,6 @@ main {
 main {
 	position: relative;
 	z-index: 1;
-	padding: 0.5em 0.25em;
-	border-radius: 6px;
 }
 
 section,

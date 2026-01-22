@@ -3,9 +3,9 @@ title: The Green Willow
 description: 'This traditional story about a Samurai knight and his love comes from Japan. It is about an age-old question: should you follow your duty or your heart? The atmosphere is romantic and ethereal, with a touch of ghostliness.'
 date: 2026-01-13T12:45:00+00:00
 thumb: /uploads/green-willow-coverart.webp
-mp3: ''
-duration: ''
-length: ''
+mp3: green-willow-mix-relaxivity.mp3
+duration: 12:52
+length: green-willow-mix-relaxivity.mp3
 talent:
   - jana
 tags:

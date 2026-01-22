@@ -3,9 +3,9 @@ title: The Grasshopper
 description: A poem from ancient Greece that celebrates the song of a hot summer's day, and the divine in the tiny.
 date: ''
 thumb: /uploads/grasshopper-videoart.jpg
-mp3: ''
-duration: ''
-length: ''
+mp3: happy-grasshopper-relaxivity.mp3
+duration: 05:09
+length: 8,751,521
 talent:
   - jana
 tags:

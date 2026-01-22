@@ -4,9 +4,9 @@ draft: false
 description: A slow love poem by DH Lawrence
 date: 2026-01-14T13:16:00+00:00
 thumb: /uploads/elephant-love-videoart.jpg
-mp3: ''
-duration: ''
-length: ''
+mp3: elephant-slow-to-mate-relaxivity.mp3
+duration: 04:06
+length: 6,840,810
 talent:
   - jana
 tags:

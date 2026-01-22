@@ -1,1 +1,1 @@
-<footer class="-p bg-light"><p>This is the footer</p></footer>
+<footer class="-p bg-prime txt-light"><p class="txt-light">This is the footer</p></footer>

@@ -4,7 +4,7 @@
 	import Footer from '$lib/components/footer/footer.svelte';
 	import { setContext } from 'svelte';
 	let { data, children } = $props();
-
+	import Header from '$lib/components/header/header.svelte';
 	const scheme = $derived(data.scheme as ColorScheme);
 	setContext('colors', scheme);
 	const typography = $derived(data.typography as Typography);
@@ -26,7 +26,16 @@
 		--text: ${scheme.text};
 		--light: ${scheme.light};
 	`}
-	class="full-height bg-light"
+	class="full-height bg-light -m-top-site"
 >
-	{@render children()}
+	<Header />
+	<main class="bg-prime">
+		{@render children()}
+	</main>
 </div>
+
+<style>
+	main {
+		background: var(--prime);
+	}
+</style>

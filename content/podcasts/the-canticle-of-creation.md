@@ -4,8 +4,8 @@ description: "When St Francis of Assisi was ageing and going blind, he wrote the
 date: 2026-01-14T13:15:00+00:00
 thumb: /uploads/sun-meme-coverart.jpg
 mp3: chant-canticle-assisi.mp3
-duration: ''
-length: ''
+duration: 04:14
+length: 4,495,555
 talent:
   - jana
 tags:

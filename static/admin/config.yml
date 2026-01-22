@@ -133,17 +133,33 @@ collections:
         widget: image
         required: false
       - name: mp3
-        label: MP3 File
+        label: MP3 filename
         widget: string
         required: false
+        hint: "Filename only (no URL). Must end with .mp3. Example:
+          birth-of-buddha-relaxivity.mp3"
+        pattern:
+          - ^[A-Za-z0-9][A-Za-z0-9._-]*\.mp3$
+          - Use a filename ending in .mp3
+            (letters/numbers/dots/dashes/underscores only). No spaces, no URL.
       - name: duration
         label: Duration
         widget: string
         required: false
+        hint: "Use MM:SS or HH:MM:SS. Examples: 6:57 or 01:06:57"
+        pattern:
+          - ^([0-9]{1,2}:)?[0-5]?[0-9]:[0-5][0-9]$
+          - Use MM:SS (e.g. 6:57) or HH:MM:SS (e.g. 01:06:57).
       - name: length
-        label: File Size
+        label: File size (bytes)
         widget: string
         required: false
+        hint: "Bytes only. Digits and commas allowed. Example: 20,971,520 (≈20 MB). No
+          MB/KB words."
+        pattern:
+          - ^[0-9]{1,3}(?:,[0-9]{3})*$|^[0-9]+$
+          - "Enter bytes as digits (optionally with commas). Example: 20971520
+            or 20,971,520. Don’t include MB/KB."
   - name: fonts
     label: Fonts
     folder: content/fonts

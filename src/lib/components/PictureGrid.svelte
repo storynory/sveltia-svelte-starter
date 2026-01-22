@@ -48,3 +48,10 @@
 		height={meta()?.height}
 	/>
 </picture>
+
+<style>
+	img {
+		margin-bottom: 0;
+		border-radius: 0;
+	}
+</style>

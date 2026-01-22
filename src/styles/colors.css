@@ -17,23 +17,12 @@
 }
 
 .txt-light {
-	color: var(--accent);
+	color: var(--light);
 }
 
 .txt,
 p,
 span {
-	color: var(--text);
-}
-
-h1,
-h2,
-h3,
-h4,
-h1 > a,
-h2 > a,
-h3 > a,
-h4 > a {
 	color: var(--text);
 }
 

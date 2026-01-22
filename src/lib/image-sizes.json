@@ -367,5 +367,29 @@
     "formats": [
       "webp"
     ]
+  },
+  "/uploads/relaxivity-icon-palm.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "sizes": [
+      320,
+      640,
+      960
+    ],
+    "formats": [
+      "webp"
+    ]
+  },
+  "/uploads/relaxivity-hero.webp": {
+    "width": 1920,
+    "height": 1080,
+    "sizes": [
+      320,
+      640,
+      960
+    ],
+    "formats": [
+      "webp"
+    ]
   }
 }

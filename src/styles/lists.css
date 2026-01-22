@@ -6,7 +6,6 @@ article ul {
 ol li,
 article ul li {
 	list-style-type: none;
-	padding-left: 1em;
 	font-family: 'Georgia', serif;
 	position: relative;
 	/*display: flex; */
@@ -22,14 +21,13 @@ article ul li::before {
 	color: blue; /* Custom bullet color */
 }
 
- dl {
-    padding: 1em;
+dl {
+	padding: 1em;
 }
 
 dd {
-    padding-bottom: 1em;
+	padding-bottom: 1em;
 }
-
 
 article ol {
 	counter-reset: list-counter; /* Initialize custom counter */
