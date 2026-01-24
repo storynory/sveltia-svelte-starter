@@ -59,7 +59,7 @@
 
 <main class="bg-prime">
 	<div class="page">
-		<article class="bg-light">
+		<section class="bg-light -p">
 			<h1>Search</h1>
 
 			<input
@@ -79,8 +79,8 @@
 
 				<ul class="r">
 					{#each results as r}
-						<li class="card">
-							<h2><a href="/podcasts/{r.item.slug}">{r.item.title}</a></h2>
+						<li class="card bg-accent">
+							<h2 class="-p-y"><a href="/podcasts/{r.item.slug}">{r.item.title}</a></h2>
 
 							{#if r.item.talent?.length}
 								<small> — {r.item.talent.join(', ')}</small>
@@ -91,13 +91,13 @@
 							{/if}
 
 							{#if r.item.description}
-								<p>{r.item.description}</p>
+								<p><a href="/podcasts/{r.item.slug}">{r.item.description}</a></p>
 							{/if}
 						</li>
 					{/each}
 				</ul>
 			{/if}
-		</article>
+		</section>
 	</div>
 </main>
 
@@ -107,9 +107,5 @@
 		margin: 1em auto;
 		border: 1px solid gray;
 		border-radius: 1em;
-	}
-
-	article ul.r {
-		list-style: none;
 	}
 </style>

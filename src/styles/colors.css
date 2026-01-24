@@ -65,6 +65,24 @@ a:hover {
 }
 
 /******************** Shapes ********************/
+.grain {
+	background:
+		repeating-linear-gradient(
+			45deg,
+			rgba(0, 0, 0, 0.015) 0,
+			rgba(0, 0, 0, 0.015) 2px,
+			rgba(0, 0, 0, 0) 3px
+		),
+		repeating-linear-gradient(
+			-45deg,
+			rgba(0, 0, 0, 0.015) 0,
+			rgba(0, 0, 0, 0.015) 1px,
+			rgba(0, 0, 0, 0) 2px
+		);
+	background-color: var(--light); /* or your panel base colour */
+	border-radius: 12px;
+	padding: 1.5rem;
+}
 
 .wave {
 	position: absolute;

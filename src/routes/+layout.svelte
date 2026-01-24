@@ -25,6 +25,7 @@
 		--gray: ${scheme.gray};
 		--text: ${scheme.text};
 		--light: ${scheme.light};
+
 	`}
 	class="full-height bg-light -m-top-site"
 >
@@ -32,6 +33,8 @@
 	<main class="bg-prime">
 		{@render children()}
 	</main>
+
+	<Footer />
 </div>
 
 <style>

@@ -2,7 +2,10 @@
 	import Speaker from '$lib/icons/iconSpeaker.svelte';
 	//	import Podcast from '$lib/icons/iconPodcast.svelte';
 	import IconReplay from '$lib/icons/iconReplay10.svelte';
+	import type { ColorScheme } from '$lib/content/types.generated';
 
+	import { getContext } from 'svelte';
+	//	import type { svelte } from '@sveltejs/vite-plugin-svelte';
 	//	let { mp3 }: { mp3: string | undefined } = $props();
 	// mp3 = stem + mp3;
 	const stem = 'https://audio.relaxivity.app/';
@@ -157,9 +160,18 @@
 		document.addEventListener('keydown', onKeydown);
 		return () => document.removeEventListener('keydown', onKeydown);
 	});
+	const colors = getContext('colors') as ColorScheme;
 </script>
 
-<figure id="figure" class="player bg-prime container -m-b -p">
+<figure
+	id="figure"
+	class="player bg-prime container -m-b -p"
+	style="
+--prime:{colors.prime};
+--accent:{colors.accent};
+--light: {colors.light};
+"
+>
 	<div class="speaker {playclass}"><Speaker></Speaker></div>
 	<button type="button" class="replay" onclick={jumpBack} aria-label="Jump back 15 seconds">
 		<IconReplay></IconReplay>
@@ -294,10 +306,12 @@
 	#time {
 		width: 60px;
 		text-align: left;
+		color: var(--light);
 	}
 
 	#dur {
 		float: right;
+		color: var(--light);
 	}
 
 	.slider {
@@ -305,7 +319,7 @@
 		appearance: none;
 		width: 100%;
 		height: 8px;
-		background: #efd480;
+		background: var(--accent);
 		outline: 0;
 		opacity: 0.7;
 		-webkit-transition: 0.2s;
@@ -322,7 +336,7 @@
 		width: 16px;
 		height: 16px;
 		border-radius: 100%;
-		background: #4caf50;
+		background: var(--accent);
 		cursor: pointer;
 	}
 

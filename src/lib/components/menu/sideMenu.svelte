@@ -1,5 +1,7 @@
 <!-- src/lib/components/SideMenu.svelte -->
 <script lang="ts">
+	import { getContext } from 'svelte';
+	import type { ColorScheme } from '$lib/content/types.generated';
 	let { links = [] } = $props<{
 		links?: { href: string; label: string }[];
 	}>();
@@ -24,6 +26,8 @@
 		window.addEventListener('keydown', onKey);
 		return () => window.removeEventListener('keydown', onKey);
 	});
+
+	const sideColors = getContext('colors') as ColorScheme;
 </script>
 
 <button
@@ -42,7 +46,13 @@
 	<div class="overlay" onclick={close} aria-hidden="true"></div>
 {/if}
 
-<aside id="side-menu" class:open aria-label="Site menu">
+<aside
+	id="side-menu"
+	class:open
+	aria-label="Site menu"
+	class="bg-light"
+	style="--prime: {sideColors.prime}"
+>
 	<nav class="menu-nav" aria-label="Main txt-prime">
 		<a href="/">
 			<svg class="icon"><use href="/icons/sprite.svg#icon-home"></use></svg>
@@ -86,7 +96,6 @@
 		height: 100dvh;
 		width: min(340px, 86vw);
 		z-index: 45;
-		background: rgba(255, 255, 255, 0.92);
 		backdrop-filter: blur(14px);
 		box-shadow: 24px 0 60px rgba(0, 0, 0, 0.18);
 		transform: translateX(-105%);
@@ -176,7 +185,7 @@
 		display: block;
 		width: 20px;
 		height: 2px;
-		background: blue;
+		background: var(--prime);
 		border-radius: 2px;
 		position: relative;
 		transition:
@@ -207,12 +216,12 @@
 	.burger.open .burger-lines::before {
 		top: 0;
 		transform: rotate(45deg);
-		background: blue;
+		background: var(--prime);
 	}
 
 	.burger.open .burger-lines::after {
 		top: 0;
 		transform: rotate(-45deg);
-		background: blue;
+		background: var(--prime);
 	}
 </style>

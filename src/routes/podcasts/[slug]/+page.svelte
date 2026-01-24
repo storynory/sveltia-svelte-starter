@@ -10,9 +10,11 @@
 	<meta name="description" content={data.post.title} />
 </svelte:head>
 
-<div class="page full">
-	<article class="bg-light">
-		<h1>{data.post.title}</h1>
+<div class="page full bg-prime">
+	<article class="bg-light grain">
+		<header class="-p txt-center">
+			<h1 class="brand-font txt-prime txt-center">{data.post.title}</h1>
+		</header>
 		<Player mp3={data.post.mp3} />
 		{#if data.post.thumb}
 			<Picture src={data.post.thumb} />
@@ -22,6 +24,9 @@
 </div>
 
 <style>
+	h1 {
+		font-size: 3em;
+	}
 	.page {
 		padding-top: 2em;
 	}

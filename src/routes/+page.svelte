@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Footer from '$lib/components/footer/footer.svelte';
 	import type { Podcast } from '$lib/content/types.generated';
 	import Picture from '$lib/components/PictureGrid.svelte';
 	import HeroPanel from '$lib/components/FrontHero.svelte';
@@ -23,7 +22,7 @@
 					<a class="txt-light" href="/podcasts/{post.slug}">{post.title}</a>
 				</h2>
 				{#if post.thumb}
-					<Picture src={post.thumb} />
+					<a href="/podcasts/{post.slug}"> <Picture src={post.thumb} /></a>
 				{/if}
 				<div class="bg-light">
 					<p class="-p"><a href="/podcasts/{post.slug}">{post.description}</a></p>
@@ -32,7 +31,6 @@
 		{/each}
 	</ul>
 </div>
-<Footer />
 
 <style>
 	li h2 {

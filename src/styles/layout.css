@@ -31,9 +31,6 @@ aside {
 }
 
 footer {
-	margin-top: 2em;
-	background: var(--frog-dark);
-	color: ivory;
 	text-align: center;
 	padding: 1em;
 }

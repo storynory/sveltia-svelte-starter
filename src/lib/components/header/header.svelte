@@ -37,7 +37,6 @@
 		fill: var(--prime);
 	}
 	.top {
-		background: ivory;
 		line-height: 1.5;
 		font-size: 1rem;
 		padding-top: 0.5em;
