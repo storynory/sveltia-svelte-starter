@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import type { ColorScheme, Typography } from '$lib/content/types.generated';
+	import type { ColorScheme, Typography, Tag } from '$lib/content/types.generated';
 	import Footer from '$lib/components/footer/footer.svelte';
 	import { setContext } from 'svelte';
 	let { data, children } = $props();
@@ -8,6 +8,10 @@
 	const scheme = $derived(data.scheme as ColorScheme);
 	setContext('colors', scheme);
 	const typography = $derived(data.typography as Typography);
+	console.log('data from layout', data.tags);
+	const tags = $derived((data.tags ?? []) as Tag[]);
+	setContext('tags', tags);
+
 	$effect(() => {
 		// typography variables have to be set on the root, this is only solution I could find that works with js variables.... will hardcode in production
 		const root = document.documentElement;

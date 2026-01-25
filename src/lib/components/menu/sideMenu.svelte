@@ -1,10 +1,8 @@
 <!-- src/lib/components/SideMenu.svelte -->
+
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import type { ColorScheme } from '$lib/content/types.generated';
-	let { links = [] } = $props<{
-		links?: { href: string; label: string }[];
-	}>();
+	import type { ColorScheme, Tag } from '$lib/content/types.generated';
 
 	let open = $state(false);
 
@@ -28,6 +26,7 @@
 	});
 
 	const sideColors = getContext('colors') as ColorScheme;
+	const tags = (getContext('tags') ?? []) as Tag[];
 </script>
 
 <button
@@ -54,23 +53,37 @@
 	style="--prime: {sideColors.prime}"
 >
 	<nav class="menu-nav" aria-label="Main txt-prime">
-		<a href="/">
+		<a href="/" onclick={close}>
 			<svg class="icon"><use href="/icons/sprite.svg#icon-home"></use></svg>
 			Home
 		</a>
-		<a href="/posts/about-relaxivity">
+		<a href="/posts/about-relaxivity" onclick={close}>
 			<svg class="icon"><use href="/icons/sprite.svg#icon-info"></use></svg>
 			About
 		</a>
-		<a href="/search/">
+		<a href="/search/" onclick={close}>
 			<svg class="icon"><use href="/icons/sprite.svg#icon-search"></use></svg>
 			Search
 		</a>
-		<a href="/posts/podcast">
+		<a href="/posts/podcast" onclick={close}>
 			<svg class="icon"><use href="/icons/sprite.svg#icon-podcast"></use></svg>
 			Podcast
 		</a>
 	</nav>
+
+	{#if tags}
+		<div class="menu-section">
+			<div class="menu-section-title">Tags</div>
+
+			<nav class="menu-nav" aria-label="Tags">
+				{#each tags as tag (tag.slug)}
+					<a href={`/tag/${tag.slug}/`} onclick={close}>
+						{tag.title}
+					</a>
+				{/each}
+			</nav>
+		</div>
+	{/if}
 </aside>
 
 <style>
@@ -118,19 +131,6 @@
 		gap: 12px;
 		padding-bottom: 10px;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-	}
-
-	.menu-title {
-		font-weight: 600;
-	}
-
-	.close {
-		border: 0;
-		background: transparent;
-		cursor: pointer;
-		font-size: 18px;
-		padding: 8px 10px;
-		border-radius: 10px;
 	}
 
 	button:hover {

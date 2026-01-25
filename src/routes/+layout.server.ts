@@ -1,5 +1,8 @@
 export const prerender = true;
+export const trailingSlash = 'always';
+
 import {
+	getTags,
 	getSettingsSite,
 	getColorSchemes,
 	getTypographyAll
@@ -12,7 +15,7 @@ export async function load() {
 	const settings = await getSettingsSite();
 	const schemes = await getColorSchemes();
 	const typographies = await getTypographyAll();
-
+	const tags = await getTags();
 	const settingsWithSchemes = joinOne(settings, schemes, {
 		field: 'activeColorScheme',
 		multiple: false
@@ -29,6 +32,7 @@ export async function load() {
 	return {
 		settings: settingsJoined,
 		scheme,
-		typography
+		typography,
+		tags
 	};
 }
