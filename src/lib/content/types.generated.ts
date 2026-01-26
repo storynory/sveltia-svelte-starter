@@ -44,6 +44,7 @@ export type Podcast = {
 	description?: string;
 	date?: string;
 	thumb?: string;
+	tags?: string[];
 	mp3?: string;
 	duration?: string;
 	length?: string;

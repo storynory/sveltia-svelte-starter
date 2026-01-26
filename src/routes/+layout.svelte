@@ -6,10 +6,11 @@
 	let { data, children } = $props();
 	import Header from '$lib/components/header/header.svelte';
 	const scheme = $derived(data.scheme as ColorScheme);
+	// svelte-ignore state_referenced_locally
 	setContext('colors', scheme);
 	const typography = $derived(data.typography as Typography);
-	console.log('data from layout', data.tags);
 	const tags = $derived((data.tags ?? []) as Tag[]);
+	// svelte-ignore state_referenced_locally
 	setContext('tags', tags);
 
 	$effect(() => {

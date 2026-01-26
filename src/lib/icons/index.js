@@ -1,6 +1,6 @@
 export { default as UserIcon } from './user.svelte';
 export { default as Menu } from './iconMenu.svelte';
-export { default as HomeIcon } from './home.svelte';
+export { default as HomeIcon } from './iconHome.svelte';
 export { default as ImageIcon } from './iconImage.svelte';
 export { default as SocketIcon } from './socket.svelte';
 export { default as PlusIcon } from './iconPlus.svelte';

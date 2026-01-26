@@ -42,6 +42,17 @@ fields:
     widget: image
     required: false
 
+  - label: Tags
+    name: tags
+    widget: relation
+    collection: tags
+    value_field: "{{slug}}"
+    display_fields: [title]
+    search_fields: [title, description]
+    multiple: true
+    required: false
+    dropdown_threshold: 12
+
   - name: mp3
     label: MP3 filename
     widget: string

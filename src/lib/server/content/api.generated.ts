@@ -136,6 +136,7 @@ function mapPodcast(row: ReadResult): Podcast {
 		description: asString(data['description']),
 		date: asString(data['date']),
 		thumb: asString(data['thumb']),
+		tags: asStringArray(data['tags']),
 		mp3: asString(data['mp3']),
 		duration: asString(data['duration']),
 		length: asString(data['length']),
@@ -160,6 +161,19 @@ export async function getPodcast(slug: string, opts: { includeDrafts?: boolean }
 		if ((item as any).draft === true) return null;
 	}
 	return item;
+}
+
+export function joinPodcastsWithTags(podcasts: Podcast[], tags: Tag[]): Podcast[] {
+	const index = new Map(tags.map((t) => [t.slug, t] as const));
+	return podcasts.map((p) => {
+		const resolved = Array.isArray((p as any)['tags'])
+			? ((p as any)['tags'] as unknown[])
+				.filter((s): s is string => typeof s === 'string')
+				.map((s) => index.get(s))
+				.filter(Boolean)
+			: [];
+		return { ...(p as any), tagsObjects: resolved } as Podcast;
+	});
 }
 
 function mapFont(row: ReadResult): Font {
